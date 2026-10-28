@@ -40,12 +40,14 @@ include("nav.html");?>
 
 <?php
 error_reporting(0);
-$type = $_POST['type'];
+$type = $_POST['type'] ?? '';
 $username = $_POST['username'];
 $password = $_POST['pass'];
 $hostname = $_POST['hostname'];
 $dbname = $_POST['dbname'];
-require_once "../controller/config.php";
+if ($type !== '') {
+  require_once "../controller/config.php";
+}
 
 
 switch($type){

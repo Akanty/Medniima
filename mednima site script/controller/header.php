@@ -14,6 +14,11 @@ session_start();
 */
 
 
+if (!class_exists('mysqli')) {
+    header("Location: installation/");
+    exit;
+}
+
 require_once "config.php";
 if(($db=="" || $db->connect_error))
 {   
