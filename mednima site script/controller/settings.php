@@ -31,11 +31,11 @@ $CBT_Configuration_Details = $db->query("SELECT * FROM quiz_settings where id='1
 if($CBT_Configuration_Details->num_rows > 0){
     // output data of each row
  $CBT_Settings = $CBT_Configuration_Details->fetch_object();
-define(QUESTION_PER_PAGE, $CBT_Settings->pagenum); 
-define(EXAM_TIME, $CBT_Settings->examtime); 	
+define('QUESTION_PER_PAGE', $CBT_Settings->pagenum);
+define('EXAM_TIME', $CBT_Settings->examtime);
 }
-define(SITE_URL, 'http://'.$_SERVER["HTTP_HOST"].'/'); //Get the site url
-define(IMG_URL, 'http://'.$_SERVER["HTTP_HOST"].'/images/'); //image folder site url
-define(DP_IMG_URL, 'http://'.$_SERVER["HTTP_HOST"].'/images/profile_pic/'); //profile pics image folder url
+require_once __DIR__ . '/site-url.php';
+define('IMG_URL', SITE_URL . 'images/');
+define('DP_IMG_URL', IMG_URL . 'profile_pic/');
 
 ?>

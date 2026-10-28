@@ -10,9 +10,9 @@ if (ini_get("session.use_cookies")) {
 }
 unset($_SESSION['login']);
 session_destroy(); // destroy session
-define(SITE_URL, 'http://'.$_SERVER["HTTP_HOST"].'/'); //Get the site url
+require_once __DIR__ . '/../controller/site-url.php';
 ob_end_clean(); // Delete the buffer.
-		$url=''.SITE_URL.'login';
+        $url=SITE_URL.'login';
         header("Location: $url");
         exit();
 ?>

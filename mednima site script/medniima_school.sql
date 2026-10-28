@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `home_slider` (
 INSERT INTO `home_slider` (`id`, `name`, `image_link`, `date`) VALUES
 (1, '', '../gallery_image/852502618.JPG', '2017-10-18 03:42:38'),
 (2, '', '../gallery_image/956295274.JPG', '2017-10-18 03:43:29'),
-(3, '', '../gallery_image/270454745.JPG', '2017-10-18 03:44:12'),
+(3, '', '../gallery_image/131332996.JPG', '2017-10-18 03:44:12'),
 (4, '', '../gallery_image/950916302.JPG', '2017-10-18 03:47:51'),
 (5, '', '../gallery_image/598141759.JPG', '2017-10-18 03:48:05');
 

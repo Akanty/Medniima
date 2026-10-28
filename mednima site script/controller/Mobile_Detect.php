@@ -662,8 +662,8 @@ class Mobile_Detect
      *                          from the $headers array instead.
      */
     public function __construct(
-        array $headers = null,
-        $userAgent = null
+        ?array $headers = null,
+        ?string $userAgent = null
     ) {
         $this->setHttpHeaders($headers);
         $this->setUserAgent($userAgent);
@@ -1224,7 +1224,8 @@ class Mobile_Detect
      */
     public function match($regex, $userAgent = null)
     {
-        $match = (bool) preg_match(sprintf('#%s#is', $regex), (false === empty($userAgent) ? $userAgent : $this->userAgent), $matches);
+        $subject = false === empty($userAgent) ? $userAgent : ($this->userAgent ?? '');
+        $match = (bool) preg_match(sprintf('#%s#is', $regex), $subject, $matches);
         // If positive match is found, store the results for debug.
         if ($match) {
             $this->matchingRegex = $regex;
