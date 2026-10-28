@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><?php echo $student_datail_list->StudentName;?> | Payment Details</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>res/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>res/css/AdminLTE.min.css">
+<style>
+
+.page-header {
+    margin: 10px 0 20px 0;
+    font-size: 22px;
+    text-align: center;
+}
+
+</style>
+  
+</head>
+<body onload="window.print();">
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="invoice">
+    <!-- title row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+        
+         <div class="row">
+        <div class="col-md-2">
+          <img src="<?php echo SITE_URL;?>images/<? echo SCHOOL_LOGO;?>" height="100" width="100"/>
+          </div>
+          
+           <div class="col-md-8">
+           <?php echo SCHOOL_NAME;?>
+           <br><small><?php echo SCHOOL_DESC;?></small><br>
+           <small><?php echo SCHOOL_ADDRESS;?></small>
+          </div>
+          <small class="pull-right">Date: <? echo date("d/m/Y");?></small>
+          </div>
+          
+        </h2>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+    
+    
+    <!-- /.col -->
+      <div class="col-xs-6">
+        <b>Student Details</b>
+        <address>
+           <b>Name:</b> <?php echo ucwords($student_datail_list->StudentName);?><br>
+          <b>Reg No.:</b> <?php echo $student_datail_list->RollId;?><br>
+          <b>Class:</b> <?php echo $student_datail_list->ClassName;?> (<?php echo $student_datail_list->Section;?>)<br>
+          <b>Email:</b> <?php echo $student_datail_list->StudentEmail;?><br>
+          <b>Gender:</b> <?php echo $student_datail_list->Gender;?><br>
+          <b>Dirth Of Birth:</b> <?php echo $student_datail_list->DOB;?>
+        </address>
+      </div>
+      <!-- /.col -->
+    
+    
+    <div class="col-xs-4 invoice-col">
+        <b>Payment Status</b><br>
+        <b>Status:</b> <?php if($student_datail_list->fee_payment_status == 0) echo "Not Paid"; else echo "Paid";?><br>
+        <b>Section:</b> <? echo $d=date('Y')."/".($d=date('Y')+1);?>
+      </div><!-- /.col -->
+    
+      <div class="col-xs-2">
+        
+        <img src="<?php echo SITE_URL."student_passport/".$student_datail_list->photo;?>" height="100" width="100"/>
+      </div>
+      
+      
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <!-- Table row -->
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h1><u>Payment Details</u></h1><br>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+    
+    <div class="col-xs-12">
+        <p class="lead">Registration Fee For <? echo $d=date('Y')."/".($d=date('Y')+1);?></p>
+
+        <div class="table-responsive">
+          <table class="table">
+            
+            <?
+        
+ $conditions_check_fee["where"] = array("ClassName_id" => $student_datail_list->ClassNameNumeric);
+$check_fee_Row = $iSMartFUN->getTRows("tblfees",$conditions_check_fee);
+if($check_fee_Row){
+
+
+foreach($check_fee_Row as $fee_result){
+?>
+            
+            <tr>
+              <th style="width:50%"><? echo $fee_result->name;?>:</th>
+              <td>N<? echo number_format($total = $fee_result->amount);?></td>
+            </tr>
+            <? $total_fee += $total;} ?>
+            <tr>
+              <th>Total:</th>
+              <td>N <? echo number_format($total_fee);?></td>
+            </tr>
+           <? }else{
+           echo "<h1>No Payment Details Yet</h1>";
+           }?>
+            
+          </table>
+        </div>
+      </div>
+      <!-- /.col -->
+    
+    
+    
+    
+      <!-- accepted payments column 
+      <div class="col-xs-4">
+        <p class="lead">Payment Methods:</p>
+        
+
+        <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+          Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr
+          jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+        </p>
+      </div>
+      <!-- /.col -->
+      
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- ./wrapper -->
+</body>
+</html>

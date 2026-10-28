@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><?php echo $student_datail_list->StudentName;?> | Profile</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>res/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>res/css/AdminLTE.min.css">
+<style>
+
+.page-header {
+    margin: 10px 0 20px 0;
+    font-size: 22px;
+    text-align: center;
+}
+
+</style>
+  
+</head>
+<body onload="window.print();">
+
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="invoice">
+    <!-- title row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+        
+         <div class="row">
+        <div class="col-md-2">
+          <img src="<?php echo SITE_URL;?>images/<? echo SCHOOL_LOGO;?>" height="100" width="100"/>
+          </div>
+          
+           <div class="col-md-8">
+           <?php echo SCHOOL_NAME;?><br>
+           <small><?php echo SCHOOL_DESC;?></small><br>
+           <small><?php echo SCHOOL_ADDRESS;?></small>
+          </div>
+          <small class="pull-right">Date: <? echo date("d/m/Y");?></small>
+          </div>
+          
+        </h2>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row">
+      
+      <div class="col-sm-5">
+        <b>Student Information</b>
+        <address>
+          <b>Name:</b> <?php echo ucwords($student_datail_list->StudentName);?><br>
+          <b>Reg No.:</b> <?php echo $student_datail_list->RollId;?><br>
+          <b>Class:</b> <?php echo $student_datail_list->ClassName;?> (<?php echo $student_datail_list->Section;?>)<br>
+          <b>Email:</b> <?php echo $student_datail_list->StudentEmail;?><br>
+          <b>Gender:</b> <?php echo $student_datail_list->Gender;?><br>
+          <b>Dirth Of Birth:</b> <?php echo $student_datail_list->DOB;?>
+        </address>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-5">
+        <b>Parent Information</b><br>
+        <b>Name:</b> <?php echo ucwords($student_datail_list->title);?> <?php echo ucwords($student_datail_list->fullname);?><br>
+        <b>Tel:</b> <?php echo ucwords($student_datail_list->phone);?><br>
+        <b>State:</b> <?php echo ucwords($student_datail_list->pstate);?><br>
+        <b>Address</b> <?php echo ucwords($student_datail_list->paddress);?>
+      </div>
+      <!-- /.col -->
+      
+      <div class="col-sm-2">
+        
+        <img src="<?php echo SITE_URL."student_passport/".$student_datail_list->photo;?>" height="100" width="100"/>
+      </div>
+      <!-- /.col -->
+      
+    </div>
+    <!-- /.row -->
+
+    <!-- Table row -->
+    <div class="row">
+      <div class="col-xs-12 table-responsive">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>S/N</th>
+            <th>SUBJECT</th>
+            <th>CODE</th>
+          </tr>
+          </thead>
+          <tbody>
+          <? $status=0;
+          $cnt = 1;	
+ $stmt = $db->query("SELECT tblsubjects.SubjectName,tblsubjects.SubjectCode,tblsubjects.id FROM tblsubjectcombination join  tblsubjects on  tblsubjects.id=tblsubjectcombination.SubjectId WHERE tblsubjectcombination.ClassId='$student_datail_list->ClassId' and tblsubjectcombination.status!='$status' order by tblsubjects.SubjectName");
+ 
+ while($row = $stmt->fetch_object())
+ {?>
+          
+          
+          <tr>
+            <td><?php echo htmlentities($cnt); ?></td>
+            <td><?php echo htmlentities($row->SubjectName); ?></td>
+            <td><?php echo htmlentities($row->SubjectCode); ?></td>
+            
+          </tr>
+          <?php $cnt++; }
+
+
+
+
+?>
+         
+          </tbody>
+        </table>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    
+  </section>
+  <!-- /.content -->
+</div>
+<!-- ./wrapper -->
+</body>
+</html>
