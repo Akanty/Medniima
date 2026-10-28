@@ -108,7 +108,7 @@ include "../school-details-settings.php";
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0.1
       </div>
-      <strong>Copyright &copy;  <?php echo date('Y');?> iSmart Tech School Management Software All Rights Reserved </strong>
+      <strong>&copy; 2027 Medni'ima International School. All Rights Reserved | Design by Zainab Aliyu Adamu</strong>
     </div>
     <!-- /.container -->
   </footer>

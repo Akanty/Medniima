@@ -137,7 +137,7 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
                                                 </div>
                                             </div>
                                             <!-- /.panel -->
-                                            <p class="text-muted text-center"><small>Copyright © SRMS</small></p>
+                                            <p class="text-muted text-center">&copy; 2027 Medni'ima International School. All Rights Reserved | Design by Zainab Aliyu Adamu</p>
                                         </div>
                                         <!-- /.col-md-11 -->
                                     </div>

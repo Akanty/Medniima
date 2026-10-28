@@ -147,7 +147,7 @@ include("design/nav.html");
 	<!--//page-->
 		<!---->
 <div class="copy">
-            <p> &copy; 2016 Minimal. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>	    </div>
+            <p>&copy; 2027 Medni'ima International School. All Rights Reserved | Design by Zainab Aliyu Adamu</p>	    </div>
 		</div>
 		</div>
 		<div class="clearfix"> </div>

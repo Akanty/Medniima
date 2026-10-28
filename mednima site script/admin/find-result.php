@@ -95,7 +95,7 @@ foreach($Term_List as $result_Term_List)
                             </div>
                         </div>
                         <!-- /.panel -->
-                        <p class="text-muted text-center"><small>Copyright © <a href="http://ismartnaija.com">iSmart Tech</a> 2017</small></p>
+                        <p class="text-muted text-center">&copy; 2027 Medni'ima International School. All Rights Reserved | Design by Zainab Aliyu Adamu</p>
                     </div>
                     <!-- /.col-md-6 col-md-offset-3 -->
                 </div>

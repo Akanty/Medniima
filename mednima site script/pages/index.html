@@ -4,72 +4,405 @@ include ("header.html");
 
 ?>
 	<style>
-	
+		.home-page {
+			--home-ink: #193b36;
+			--home-muted: #60736c;
+			--home-green: #356e59;
+			--home-coral: #cc694a;
+			--home-paper: #f4f6f1;
+			color: var(--home-ink);
+			font-family: 'Open Sans', Arial, sans-serif;
+		}
 
+		.home-page .container {
+			width: min(1200px, calc(100% - 48px));
+	}
 
-/********************************/
-/*          Hero Headers        */
-/********************************/
-.hero {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 3;
-    color: red;
-    text-align: center;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
-      -webkit-transform: translate3d(-50%,-50%,0);
-         -moz-transform: translate3d(-50%,-50%,0);
-          -ms-transform: translate3d(-50%,-50%,0);
-           -o-transform: translate3d(-50%,-50%,0);
-              transform: translate3d(-50%,-50%,0);
-}
-.hero h1 {
-    font-size: 6em;    
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-	text-align:center;
-	color:#fff;
-	margin-bottom: 15px;
-	overflow: hidden;
-	
-}
+		.home-page .home-hero {
+			position: relative;
+			margin: 0;
+			overflow: hidden;
+			background: var(--home-ink);
+		}
 
+		.home-page .banner-silder,
+		.home-page #JiSlider,
+		.home-page #JiSlider .slider,
+		.home-page #JiSlider ul,
+		.home-page #JiSlider li,
+		.home-page .w3layouts-banner-top {
+			min-height: 570px;
+			height: min(720px, 78vh);
+		}
 
+		.home-page .w3layouts-banner-top {
+			position: relative;
+			isolation: isolate;
+			display: flex;
+			align-items: center;
+			background-position: center;
+			background-size: cover;
+		}
 
-/********************************/
-/*            Overlay           */
-/********************************/
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    background-color: #080d15;
-    opacity: .7;
-}
+		.home-page .w3layouts-banner-top::before {
+			position: absolute;
+			z-index: -1;
+			inset: 0;
+			background: linear-gradient(90deg, rgba(13, 37, 33, .84), rgba(13, 37, 33, .35) 68%, rgba(13, 37, 33, .08));
+			content: '';
+		}
 
+		.home-page .agileits-banner-info {
+			max-width: 760px;
+			padding: 0 0 20px;
+			text-align: left;
+			animation: home-enter .7s ease-out both;
+		}
 
-/********************************/
-/*          Media Queries       */
-/********************************/
-@media screen and (min-width: 980px){
-    .hero { width: 980px; }    
-}
-@media screen and (max-width: 640px){
-    .hero h1 { font-size: 4em; }    
-}
-	
-	
+		.home-page .home-hero-kicker {
+			margin: 0 0 18px;
+			color: #f1bd8b;
+			font-size: 14px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		.home-page .agileits-banner-info h1 {
+			margin: 0 0 18px;
+			color: #fff;
+			font-family: Georgia, 'Times New Roman', serif;
+			font-size: 58px;
+			font-weight: 400;
+			line-height: 1.08;
+		}
+
+		.home-page .agileits-banner-info p {
+			max-width: 620px;
+			margin: 0;
+			color: rgba(255, 255, 255, .9);
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 1.7;
+		}
+
+		.home-page .posts {
+			padding: 68px 0 74px;
+			background: var(--home-paper);
+		}
+
+		.home-page .posts .row {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 18px;
+			margin: 0 0 18px;
+		}
+
+		.home-page .posts .row:last-child {
+			margin-bottom: 0;
+		}
+
+		.home-page .posts .row > div {
+			min-width: 0;
+		}
+
+		.home-page .posts article {
+			display: flex;
+			width: 100%;
+			min-height: 190px;
+			float: none;
+			align-items: flex-start;
+			gap: 22px;
+			padding: 28px;
+			border: 1px solid #dce5dc;
+			border-radius: 5px;
+			background: #fff;
+			box-shadow: 0 8px 24px rgba(25, 59, 54, .045);
+		}
+
+		.home-page .posts .pic {
+			display: grid;
+			width: 76px;
+			height: 76px;
+			flex: 0 0 76px;
+			float: none;
+			place-items: center;
+			margin: 0;
+			border-radius: 4px;
+			background: #edf3ec;
+		}
+
+		.home-page .posts .pic img {
+			width: 64px;
+			max-height: 64px;
+			object-fit: contain;
+		}
+
+		.home-page .posts .info {
+			min-width: 0;
+			padding: 0;
+			color: var(--home-muted);
+			font-size: 15px;
+			line-height: 1.75;
+		}
+
+		.home-page .posts .info h3 {
+			margin: 0 0 10px;
+			padding: 0;
+			color: var(--home-ink);
+			font-family: Georgia, 'Times New Roman', serif;
+			font-size: 23px;
+			font-weight: 400;
+			line-height: 1.25;
+		}
+
+		.home-page .news {
+			padding: 70px 0 76px;
+			background: #e8eee8;
+		}
+
+		.home-page .news h2,
+		.home-page .events h2 {
+			padding: 0 0 32px;
+			color: var(--home-ink);
+			font-family: Georgia, 'Times New Roman', serif;
+			font-size: 38px;
+			font-weight: 400;
+			line-height: 1.2;
+			text-align: left;
+		}
+
+		.home-page .news article {
+			display: grid;
+			width: 100%;
+			float: none;
+			grid-template-columns: 72px minmax(0, 1fr);
+			gap: 20px;
+			margin: 0 0 14px;
+			padding: 23px 26px;
+			border-left: 3px solid var(--home-coral);
+			background: #fff;
+		}
+
+		.home-page .news .current-date,
+		.home-page .events .current-date {
+			width: 72px;
+			float: none;
+			margin: 0;
+			padding: 7px 4px;
+			border-radius: 3px;
+			background: var(--home-green);
+			font-family: Arial, sans-serif;
+			font-size: 12px;
+			font-weight: 700;
+			line-height: 1.3;
+			text-transform: uppercase;
+		}
+
+		.home-page .current-date .date {
+			margin: 4px 0 0;
+			border-radius: 2px;
+			background: transparent;
+			color: #fff;
+			font-family: Georgia, 'Times New Roman', serif;
+			font-size: 30px;
+			line-height: 1.1;
+		}
+
+		.home-page .news .info {
+			min-width: 0;
+			color: var(--home-muted);
+			font-size: 14px;
+			line-height: 1.65;
+		}
+
+		.home-page .news .info h4 {
+			margin: 0 0 8px;
+			color: var(--home-ink);
+			font-family: Georgia, 'Times New Roman', serif;
+			font-size: 20px;
+			font-weight: 400;
+			line-height: 1.35;
+		}
+
+		.home-page .news .info p {
+			padding: 0 0 10px;
+		}
+
+		.home-page .more {
+			padding: 0;
+			background: none;
+			color: var(--home-green);
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.home-page .btn-holder {
+			padding: 22px 0 0;
+		}
+
+		.home-page a.btn,
+		.home-page .btn {
+			height: auto;
+			padding: 13px 20px;
+			border: 1px solid var(--home-green);
+			border-radius: 3px;
+			background: var(--home-green);
+			color: #fff;
+			font-size: 14px;
+			font-weight: 700;
+			line-height: 1.3;
+			transition: background-color .2s ease, color .2s ease;
+		}
+
+		.home-page a.btn:hover,
+		.home-page .btn:hover {
+			background: #fff;
+			color: var(--home-green);
+		}
+
+		.home-page .events {
+			padding: 70px 0 80px;
+			background: #fff;
+		}
+
+		.home-page .events .container {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			column-gap: 24px;
+		}
+
+		.home-page .events h2,
+		.home-page .events .btn-holder,
+		.home-page .events .container > div[style] {
+			grid-column: 1 / -1;
+		}
+
+		.home-page .events article {
+			display: grid;
+			width: 100%;
+			float: none;
+			grid-template-columns: 72px minmax(0, 1fr);
+			gap: 17px;
+			padding: 20px 0 0;
+			border-top: 1px solid #dfe6df;
+			font-size: 14px;
+			line-height: 1.65;
+		}
+
+		.home-page .events .info p {
+			min-height: 0;
+			padding: 0 0 12px;
+			color: var(--home-muted);
+		}
+
+		.home-page .events .info strong {
+			color: var(--home-ink);
+			font-family: Georgia, 'Times New Roman', serif;
+			font-size: 19px;
+			font-weight: 400;
+		}
+
+		@keyframes home-enter {
+			from { opacity: 0; transform: translateY(14px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		@media (max-width: 767px) {
+			.home-page .container {
+				width: calc(100% - 32px);
+			}
+
+			.home-page .banner-silder,
+			.home-page #JiSlider,
+			.home-page #JiSlider .slider,
+			.home-page #JiSlider ul,
+			.home-page #JiSlider li,
+			.home-page .w3layouts-banner-top {
+				min-height: 500px;
+				height: 68vh;
+			}
+
+			.home-page .agileits-banner-info {
+				padding: 0 20px;
+			}
+
+			.home-page .agileits-banner-info h1 {
+				font-size: 42px;
+			}
+
+			.home-page .agileits-banner-info p {
+				font-size: 16px;
+			}
+
+			.home-page .posts {
+				padding: 36px 0;
+			}
+
+			.home-page .posts .row,
+			.home-page .events .container {
+				grid-template-columns: 1fr;
+			}
+
+			.home-page .posts article {
+				min-height: 0;
+				gap: 16px;
+				padding: 20px;
+			}
+
+			.home-page .posts .pic {
+				width: 58px;
+				height: 58px;
+				flex-basis: 58px;
+			}
+
+			.home-page .posts .pic img {
+				width: 50px;
+				max-height: 50px;
+			}
+
+			.home-page .posts .info h3 {
+				font-size: 20px;
+			}
+
+			.home-page .news,
+			.home-page .events {
+				padding: 42px 0;
+			}
+
+			.home-page .news h2,
+			.home-page .events h2 {
+				padding-bottom: 22px;
+				font-size: 32px;
+			}
+
+			.home-page .news article {
+				grid-template-columns: 58px minmax(0, 1fr);
+				gap: 14px;
+				padding: 18px 14px;
+			}
+
+			.home-page .news .current-date,
+			.home-page .events .current-date {
+				width: 58px;
+			}
+
+			.home-page .current-date .date {
+				font-size: 25px;
+			}
+
+			.home-page .events article {
+				grid-template-columns: 58px minmax(0, 1fr);
+				gap: 14px;
+			}
+		}
 	</style>
     
   <link href="<?php echo SITE_URL;?>css/JiSlider.css" rel="stylesheet"> 
 <link rel="stylesheet" href="<?php echo SITE_URL;?>css/flexslider.css" type="text/css" media="screen" property="" />
    
-    <!-- banner -->
-    <div class="row">
+	<main class="home-page">
+	<!-- banner -->
+	<div class="row home-hero">
 	<div class="banner-silder">
 		<div id="JiSlider" class="jislider">
 			<div class="slider">
@@ -84,10 +417,9 @@ include ("header.html");
 
 							<div class="container">
 								<div class="agileits-banner-info">
-								 <!--<span>Education</span>
-									<h3>For the Creatives</h3>
-									 <p>You can learn anything</p>-->
-									
+									<p class="home-hero-kicker">A strong start for every learner</p>
+									<h1><?php echo SCHOOL_NAME;?></h1>
+									<p><?php echo SCHOOL_DESC;?></p>
 								</div>	
 							</div>
 						</div>
@@ -262,3 +594,7 @@ include ("header.html");
 	
 
 	
+	</main>
+
+
+

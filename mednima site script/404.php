@@ -22,7 +22,7 @@
 	</div>
 		<!---->
 <div class="copy-right">
-           <p> &copy;  <?php echo date('Y')." ". SCHOOL_NAME;?>. All Rights Reserved | Design by <a href="http://fb.com/ismartola/" target="_blank">iSmart Tech</a> </p>	  </div>
+           <p>&copy; 2027 Medni'ima International School. All Rights Reserved | Design by Zainab Aliyu Adamu</p>	  </div>
 		
      
 <!---->
