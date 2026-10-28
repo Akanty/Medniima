@@ -1,0 +1,127 @@
+<?php include("header.html");
+include("nav.html");?>
+
+<!--banner-->	
+		    <div class="banner">
+		    	<h2>
+			<a href="index.php">Home</a>
+			<i class="fa fa-angle-right"></i>
+				<span>Check Result</span>
+				</h2>
+		    </div>
+		<!--//banner-->
+ 	 <!--page-->
+     
+ 	 <div class="blank">
+     
+    
+        
+        
+        
+        
+        
+        
+         <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+            <div class="panel login-box">
+                            
+                            <div class="panel-body p-20">
+            
+             <form action="view-result.php" method="post">
+                                	
+                                    
+                                    <div class="form-group">
+              <label class="control-label">Select Child</label>
+             <select class="form-control"  name="rollid">
+             <option value="">Select A Child</option>
+                  <?php 
+    $children_list_condtion['where'] = array('parent_id' => $parent_datail->id);
+$student_list = $iSMartFUN->getTRows("tblstudents",$children_list_condtion);
+if($student_list)
+{
+	
+foreach($student_list as $result)
+{ 
+$class_list_condtion['where'] = array('id' => $result->ClassId);
+	$class_list_condtion['return_type'] = 'single'; 
+	$class_detail = $iSMartFUN->getTRows("tblclasses",$class_list_condtion);
+  ?>
+<option value="<?php echo htmlentities($result->RollId); ?>"><?php echo htmlentities($result->StudentName); ?> - &nbsp;<?php echo htmlentities($result->RollId); ?> &nbsp;<?php echo htmlentities($class_detail->ClassName); ?></option>
+<?php }} ?>
+                </select>
+            </div>
+            
+                                    
+                                    
+                                    <div class="form-group">
+                                		<label for="card_sn">Card S/N</label>
+                                        <input type="text" class="form-control" id="card_sn" placeholder="Enter Scratch Card Serial Number" autocomplete="on" name="card_sn">
+                                	</div>
+
+
+
+<div class="form-group">
+                                		<label for="card_pin">Card Pin</label>
+                                        <input type="text" class="form-control" id="card_pin" placeholder="Enter Scratch Card Pin" autocomplete="on" name="card_pin">
+                                	</div>
+                                    
+                                    
+                                    
+                                    <div class="form-group">
+<label for="default" class="control-label">Session</label>
+ 
+ <select name="sessionid" class="form-control sessionid" id="sessionid" required="required">
+<option value="">Select Session</option>
+<?php for($d=date('Y');$d>=2015;$d--) echo '<option value="'.$d.'">'.$d.'/'.($d+1).'</option>'; ?>
+ </select>
+                                                        </div>
+                                                          
+                                                   
+                                    
+                                    
+                                    
+                                    
+
+<div class="form-group">
+                                                        <label for="default" class="col-sm-2 control-label">Term</label>
+ <select name="term" class="form-control" id="term" required="required">
+<option value="">Select Term</option>
+<?php 
+$Term_List = $iSMartFUN->getTRows("tblterm");
+if($Term_List)
+{
+foreach($Term_List as $result_Term_List)
+{   ?>
+<option value="<?php echo htmlentities($result_Term_List->id); ?>"><?php echo htmlentities($result_Term_List->term); ?></option>
+<?php }} ?>
+ </select>
+</div>
+
+
+
+
+
+    
+                                    <div class="form-group mt-20">
+                                        <div class="">
+                                      
+                                            <button type="submit" class="btn btn-success btn-labeled pull-right">Check Result<span class="btn-label btn-label-right"><i class="fa fa-check"></i></span></button>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+
+                                       
+                                </form>
+
+                               
+
+                            </div>
+                        </div>
+            </div></div>
+        
+       
+ 	 	
+ 	 	 <div class="clearfix"> </div>
+ 	 </div>
+	<!--//page-->
+		<?php include("footer.html");?>

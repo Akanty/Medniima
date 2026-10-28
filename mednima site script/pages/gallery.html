@@ -1,0 +1,72 @@
+
+<div class="contact">
+  <div class="container">
+	<h3 class="w3l_header w3_agileits_header">Our <span>Gallery</span></h3>
+			<div class="inner_w3l_agile_grids-gal">
+				<? if($photo_List){
+foreach($photo_List as $photo_List_row){?>
+                <div class="col-md-4 gallery-grid gallery1">
+					<a href="<?php echo SITE_URL.$photo_List_row->link;?>" class="swipebox"><img src="<?php echo SITE_URL.$photo_List_row->link;?>" class="img-responsive" alt="/">
+						<div class="textbox">
+						<h4><?php echo $photo_List_row->photo_name;?></h4>
+						<p><i class="fa fa-graduation-cap" aria-hidden="true"></i></p>
+							
+						</div>
+				</a>
+				</div>
+                
+				
+			<? }}else{
+echo "<div style='text-align:center; color:red'><h3>No Photo In Gallery Yet</h3></div>";
+}?>
+				<div class="clearfix"> </div>
+			</div>
+		</div>	
+	</div>	
+	<!--//gallery-->
+
+
+
+<!-- js -->
+<script type="text/javascript" src="<?php echo SITE_URL;?>js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="<?php echo SITE_URL;?>js/move-top.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smooth-scrolling -->
+<link rel="stylesheet" href="<?php echo SITE_URL;?>css/swipebox.css">
+				<script src="<?php echo SITE_URL;?>js/jquery.swipebox.min.js"></script> 
+					<script type="text/javascript">
+						jQuery(function($) {
+							$(".swipebox").swipebox();
+						});
+					</script>
+
+
+<!-- for bootstrap working -->
+	<script src="<?php echo SITE_URL;?>js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>

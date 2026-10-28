@@ -1,0 +1,264 @@
+<title><?php if(isset($title)){echo $title." : : ".SCHOOL_NAME;}else{echo SCHOOL_NAME." ". SCHOOL_DESC; }?></title>
+<?php 
+include ("header.html");
+
+?>
+	<style>
+	
+
+
+/********************************/
+/*          Hero Headers        */
+/********************************/
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: red;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+      -webkit-transform: translate3d(-50%,-50%,0);
+         -moz-transform: translate3d(-50%,-50%,0);
+          -ms-transform: translate3d(-50%,-50%,0);
+           -o-transform: translate3d(-50%,-50%,0);
+              transform: translate3d(-50%,-50%,0);
+}
+.hero h1 {
+    font-size: 6em;    
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+	text-align:center;
+	color:#fff;
+	margin-bottom: 15px;
+	overflow: hidden;
+	
+}
+
+
+
+/********************************/
+/*            Overlay           */
+/********************************/
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #080d15;
+    opacity: .7;
+}
+
+
+/********************************/
+/*          Media Queries       */
+/********************************/
+@media screen and (min-width: 980px){
+    .hero { width: 980px; }    
+}
+@media screen and (max-width: 640px){
+    .hero h1 { font-size: 4em; }    
+}
+	
+	
+	</style>
+    
+  <link href="<?php echo SITE_URL;?>css/JiSlider.css" rel="stylesheet"> 
+<link rel="stylesheet" href="<?php echo SITE_URL;?>css/flexslider.css" type="text/css" media="screen" property="" />
+   
+    <!-- banner -->
+    <div class="row">
+	<div class="banner-silder">
+		<div id="JiSlider" class="jislider">
+			<div class="slider">
+            <ul>
+				<?php 
+        if($slider_List){
+        foreach($slider_List as $slider_List_row) {
+		
+?>
+                <li>
+					<div class="w3layouts-banner-top" style="background-image:url(<?php echo SITE_URL.$slider_List_row->image_link;?>)">
+
+							<div class="container">
+								<div class="agileits-banner-info">
+								 <!--<span>Education</span>
+									<h3>For the Creatives</h3>
+									 <p>You can learn anything</p>-->
+									
+								</div>	
+							</div>
+						</div>
+				</li>
+				
+<? }}?>
+			</ul>
+            <div class="bg-bottom"></div>
+            </div>
+		</div>
+        
+      </div>
+</div>
+<!-- //banner -->
+    
+    
+    
+    
+	<!--<div class="slider">
+		<ul class="bxslider">
+        <?php 
+        if($slider_List){
+        foreach($slider_List as $slider_List_row) {
+		
+?>
+<li>
+            <img style="opacity: 1.0;" src="<?php echo SITE_URL.$slider_List_row->image_link;?>" alt="">
+				<div class="hero">
+        <hgroup>
+            <h1><?php //echo $name;?></h1>        
+            <h3><?php //echo SCHOOL_NAME;?></h3>
+        </hgroup>
+       
+      </div>
+				<!-- / content 
+			</li>
+
+<? }}?>
+        
+		
+		</ul>
+		<div class="bg-bottom"></div>
+	</div>-->
+	
+	<section class="posts">
+		<div class="container">
+        
+        <div class="row">
+        
+        <div>
+			<article>
+				<div class="pic"><img width="121" src="<?php echo SITE_URL;?>images/logo.png" alt=""></div>
+				<div class="info">
+					<h3>Welcome</h3>
+					<p><? echo HOME_GREETING;?>
+                    </p>
+				</div>
+			</article>
+            </div>
+           
+            <div>
+			<article>
+				<div class="pic"><img width="121" src="<?php echo SITE_URL;?>images/3.png" alt=""></div>
+				<div class="info">
+					<h3>Our Academic Curriculum</h3>
+					<p><? echo $iSMartFUN->shorttext(ACADEMIC_CURRICULUM,"pages-academic-curriculum");?></p>
+				</div>
+			</article>
+            
+            </div>
+            
+            </div><!--/row-->
+            
+            
+            
+            <div class="row">
+        <div>
+            <article>
+				<div class="pic"><img width="121" src="<?php echo SITE_URL;?>images/2.png" alt=""></div>
+				<div class="info">
+					<h3>Admission into <? echo SCHOOL_NAME;?></h3>
+					<p>
+                    <? echo $iSMartFUN->shorttext(ADMISSION_IN_BRIEF,"pages-admission-details");?>
+                     </p>
+				</div>
+			</article>
+            </div>
+            <div>
+			<article>
+				<div class="pic"><img width="121" src="<?php echo SITE_URL;?>images/3.png" alt=""></div>
+				<div class="info">
+					<h3>Awesome results of our students</h3>
+					<p>
+                     <? echo $iSMartFUN->shorttext(STUDENT_RESULT_IN_BRIEF,"pages-our-students-result");?>
+                    </p>
+				</div>
+			</article>
+            
+            </div>
+            
+            </div><!--/row-->
+            
+            
+            
+		</div>
+		<!-- / container -->
+	</section>
+
+	<section class="news">
+		<div class="container">
+			<h2>Latest news</h2>
+			
+            <?php if($news_List){ 
+            foreach($news_List as $news_List_row){?>
+            
+            
+            <article>
+				<div class="current-date">
+							<p><?php echo date('F',strtotime($news_List_row->date));?></p>
+							<p class="date"><?php echo date('j',strtotime($news_List_row->date));?></p>
+						</div>
+				<div class="info">
+					<h4><?php echo $news_List_row->title;?> </h4>
+					<p><?php echo $news_List_row->content;?></p>
+					<a class="more" href="<?php echo SITE_URL;?>news-details-<?php echo $news_List_row->id;?>">Read more</a>
+				</div>
+			</article>
+            <?}?>
+            <div class="btn-holder">
+				<a class="btn" href="<?php echo SITE_URL;?>news">See archival news</a>
+			</div>
+            
+            <? }else{
+            echo "<div style='text-align:center'><h3>No News Yet</h3></div>";}?>
+            
+			
+			
+		</div>
+		<!-- / container -->
+	</section>
+
+	<section class="events">
+		<div class="container">
+			<h2>Upcoming events</h2>
+            
+            <? if($event_List){
+            foreach($event_List as $event_List_row){ ?>
+            
+			<article>
+				<div class="current-date">
+							<p><?php echo date('F',strtotime($event_List_row->date));?></p>
+							<p class="date"><?php echo date('j',strtotime($event_List_row->date));?></p>
+						</div>
+				<div class="info">
+					<p><strong><?php echo $event_List_row->title;?></strong><br />
+                    <?php echo $event_List_row->content;?></p>
+					<a class="more" href="<?php echo SITE_URL;?>event-details-<?php echo $event_List_row->id;?>">Read more</a>
+				</div>
+			</article>
+            <? }?>
+            
+			<div class="btn-holder">
+				<a class="btn blue" href="<?php echo SITE_URL;?>events">See all upcoming events</a>
+			</div>
+            <? }else{
+            echo "<div style='text-align:center'><h3>No Upcoming Event For Now</h3></div>";
+            }?>
+            
+		</div>
+		<!-- / container -->
+	</section>
+	
+
+	

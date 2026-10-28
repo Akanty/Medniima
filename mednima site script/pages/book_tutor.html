@@ -1,0 +1,186 @@
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  
+  <link rel='stylesheet prefetch' href='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc3/angular-material.css'>
+<link rel='stylesheet prefetch' href='http://localhost:8080/docs.css'>
+
+	<div class="divider"></div>
+	
+	<div class="content">
+		<div class="container">
+			
+<div class="col-md-8 col-md-offset-2">
+
+<style>
+
+#SignupContent {
+		max-width: 600px;
+		backgroud-color: white;
+		border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) {
+		#SignupContent {
+				height: 100%;
+		}
+	#materialToolbar {
+		    padding: 10px;
+	}
+}
+
+</style>
+
+
+
+<div ng-controller="DemoCtrl" ng-cloak="" class="md-inline-form" ng-app="MyApp" layout="column" layout-sm="row" layout-align="center center" layout-align-sm="start start" layout-fill>
+		<md-content id="SignupContent" class="md-whiteframe-10dp" flex-sm>
+				<md-toolbar flex id="materialToolbar">
+						<div class="md-toolbar-tools"> <span flex=""></span> <span class="md-headline" align="center">Book A Tutor</span> <span flex=""></span> </div>
+				</md-toolbar>
+				<div layout-padding="">
+                
+                
+                <?php if($msg){?>
+<div class="alert alert-success left-icon-alert" role="alert">
+ <strong>Thank You!</strong><?php echo htmlentities($msg); ?>
+ </div><?php } 
+else if($error){?>
+    <div class="alert alert-danger left-icon-alert" role="alert">
+                                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                                        </div>
+                                        <?php } ?>
+                
+						<div></div>
+						<form name="userForm" method="POST" action="" ng-submit="user.submit(userForm.$valid)" enctype="multipart/form-data">
+								<input type="hidden" name="action" value="signup" />
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>First name</label>
+												<input ng-model="user.first_name" name="first_name" required type="text" ng-pattern="/^[a-zA-Z'. -]+$/" placeholder="Your First Name">
+												<div ng-if="userForm.first_name.$dirty" ng-messages="userForm.first_name.$error" role="alert">
+														<div ng-message="required" class="my-message">First Name is Required.</div>
+														<div ng-message="pattern" class="my-message">Enter correct First Name.</div>
+												</div>
+										</md-input-container>
+										<md-input-container flex-gt-sm="">
+												<label>Last Name</label>
+												<input ng-model="user.last_name" name="last_name" required type="text" ng-pattern="/^[a-zA-Z'. -]+$/" placeholder="Your Last Name">
+												<div ng-if="userForm.last_name.$dirty" ng-messages="userForm.last_name.$error" role="alert">
+														<div ng-message="required" class="my-message">Last Name is Required.</div>
+														<div ng-message="pattern" class="my-message">Enter correct Last Name.</div>
+												</div>
+										</md-input-container>
+								</div>
+								<div layout="row" layout-sm="column">
+										<p style="font-size: 12px; margin-left: 3px; margin-top: 18px;">Gender: </p>
+										<input type="hidden" name="gender" value="{{user.gender}}" />
+										<md-radio-group style="margin: 12px 0 19px;" ng-model="user.gender" required>
+												<md-radio-button value="Male" class="md-primary">Male</md-radio-button>
+												<md-radio-button value="Female">Female</md-radio-button>
+										</md-radio-group>
+										<md-input-container flex-gt-sm="60">
+												<label>Age</label>
+												<input required type="number" step="any" name="age" ng-model="user.age" min="7" max="100" placeholder="20" />
+												<div ng-if="userForm.age.$dirty" ng-messages="userForm.age.$error" role="alert" multiple>
+														<div ng-message="required">Age is Required.</div>
+														<div ng-message="min">Only Above 13 years Old are allowed.</div>
+														<div ng-message="max">Sorry {{userForm.age.$viewValue}} years old are not Allowed.</div>
+												</div>
+										</md-input-container>
+								</div>
+								
+                                
+                                <div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Phone Number</label>
+												<input required type="text" name="phone" ng-model="user.phone" ng-pattern="/^[0-9'. -]+$/" placeholder="Enter Your Contact Phone Number" />
+												<div ng-if="userForm.subject.$dirty" ng-messages="userForm.phone.$error" role="alert">
+														<div ng-message="required" class="my-message">Phone Number is Required.</div>
+														<div ng-message="pattern" class="my-message">Enter Valide Phone Number. </div>
+														<div ng-message="phone" class="my-message">Enter Subject. </div>
+												</div>
+										</md-input-container>
+								</div>
+                                
+                                
+                                
+                                
+                                <div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Email</label>
+												<input required type="email" name="email" ng-model="user.email" ng-pattern="/^[_a-z0-9-+]+(\.[_a-z0-9-+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="someone@example.com" />
+												<div ng-if="userForm.email.$dirty" ng-messages="userForm.email.$error" role="alert">
+														<div ng-message="required" class="my-message">Email Address is Required.</div>
+														<div ng-message="pattern" class="my-message">Enter Correct Email Address. </div>
+														<div ng-message="email" class="my-message">Enter Correct Email Address. </div>
+												</div>
+										</md-input-container>
+								</div>
+                                
+                                
+                                
+                                
+                                
+                                
+                                 <div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Subject(s)</label>
+												<input required type="text" name="subject" ng-model="user.subject" ng-pattern="/^[a-zA-Z][a-zA-Z0-9_.(...)\s\W]+$/" placeholder="enter subjects separte with comma" />
+												<div ng-if="userForm.subject.$dirty" ng-messages="userForm.subject.$error" role="alert">
+														<div ng-message="required" class="my-message">Subject is Required.</div>
+														<div ng-message="pattern" class="my-message">Enter Correct Subject Address. </div>
+														<div ng-message="subject" class="my-message">Enter Subject. </div>
+												</div>
+										</md-input-container>
+								</div>
+                                
+                                
+                                
+                                
+                                <div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Address</label>
+                                                <textarea required name="address" ng-model="user.address" ng-pattern="/^[a-zA-Z][a-zA-Z0-9_.(...)\s\W]+$/" placeholder="Enter Your Contact Phone Number"></textarea>
+												
+												<div ng-if="userForm.address.$dirty" ng-messages="userForm.address.$error" role="alert">
+														<div ng-message="required" class="my-message">Address is Required.</div>
+														<div ng-message="pattern" class="my-message">Enter Contact Address. </div>
+														<div ng-message="address" class="my-message">Enter Address. </div>
+												</div>
+										</md-input-container>
+								</div>
+                                
+                                
+                                
+								<md-button class="md-raised md-primary" style="width:100%; margin: 0px 0px;" type="submit" name="submit">Submit</md-button>
+								
+						</form>
+				</div>
+		</md-content>
+</div>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.min.js'></script>
+<script src='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc3/angular-material.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
+
+<script  src="<?php echo SITE_URL;?>js/index.js"></script>
+
+
+
+
+
+
+
+                
+			</div>
+		</div>
+		<!-- / container -->
+	</div>
+	
+	
+    
+    
+    
+	

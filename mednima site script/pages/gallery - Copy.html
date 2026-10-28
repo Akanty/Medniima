@@ -1,0 +1,84 @@
+	<!-- / header -->
+	<style>
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+	<div class="divider"></div>
+	
+	<div class="content">
+		<div class="container">
+			<h1 class="single">Photo Gallery</h1>
+<div class="main-content">
+<? if($photo_List){
+foreach($photo_List as $photo_List_row){?>
+
+                <div class="responsive">
+                <div class="gallery">
+  <a target="_blank" href="<?php echo SITE_URL.$photo_List_row->link;?>">
+    <img src="<?php echo SITE_URL.$photo_List_row->link;?>" alt="<?php echo $photo_List_row->photo_name;?>" width="300" height="200">
+  </a>
+
+</div>
+</div>
+<? }}else{
+echo "<div style='text-align:center; color:red'><h3>No Photo In Gallery Yet</h3></div>";
+}?>
+
+                
+			</div>
+			
+			
+	
+		</div>
+		<!-- / container -->
+	</div>
+	
+	
+    
+    
+    
+	

@@ -1,0 +1,65 @@
+
+	<!-- / header -->
+	
+	<div class="divider"></div>
+	
+	<div class="content">
+		<div class="container">
+
+			<div class="main-content">
+				<h1>News</h1>
+				<section class="posts-con">
+					<article>
+						<div class="current-date">
+							<p><?php echo date('F',strtotime($news_details->date));?></p>
+							<p class="date"><?php echo date('j',strtotime($news_details->date));?></p>
+						</div>
+						<div class="info">
+							<h3><?php echo $news_details->title;?></h3>
+							<p><?php echo $news_details->content;?></p>
+						</div>
+					</article>
+					
+					
+				</section>
+			</div>
+			
+			<aside id="sidebar">
+				<div class="widget clearfix calendar">
+					<h2>Calendar</h2>
+					
+                    
+                     <div style="overflow:hidden;">
+    
+                <div id="datetimepicker12"></div>
+           
+    
+</div>
+					
+					
+				</div>
+				
+			</aside>
+			<!-- / sidebar -->
+	
+		</div>
+		<!-- / container -->
+	</div>
+	
+	
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+			<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+            $('#datetimepicker12').datetimepicker({
+                inline: true,
+                
+            });
+        });
+    </script>
+    
+

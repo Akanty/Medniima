@@ -1,0 +1,41 @@
+<?php include("header.html");
+include("nav.html");?>
+
+<!--banner-->	
+		    <div class="banner">
+		    	<h2>
+			<a href="index.php">Home</a>
+			<i class="fa fa-angle-right"></i>
+				<span>Gallery</span>
+				</h2>
+		    </div>
+		<!--//banner-->
+ 	 <!--gallery-->
+     
+ 	 <div class="gallery">
+ 	 
+     <? if($photo_List){
+foreach($photo_List as $photo_List_row){?>
+     	<div class="col-md">
+ 	 		<div class="gallery-img">
+ 	 		<a href="<?php echo SITE_URL.$photo_List_row->link;?>" class="b-link-stripe b-animate-go  swipebox"  title="Image Title" >
+				 <img class="img-responsive " src="<?php echo SITE_URL.$photo_List_row->link;?>" alt="" />   
+					<span class="zoom-icon"> </span> </a>
+			</a>
+			</div>	
+ 	 		<div class="text-gallery">
+ 	 			<h6><?php echo $photo_List_row->photo_name;?></h6>
+ 	 		</div>
+ 	 	</div>
+        
+        <? }}?>
+        
+ 	 	
+ 	 	 <div class="clearfix"> </div>
+ 	 </div>
+	<!--//gallery-->
+    
+    <?php include("footer.html");?>
+    
+	
+

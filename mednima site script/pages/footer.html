@@ -1,0 +1,146 @@
+<div class="container">
+		<a href="#fancy" class="info-request">
+			<span class="holder">
+				<span class="title">Request information</span>
+				<span class="text">Do you have some questions? Fill the form and get an answer!</span>
+			</span>
+			<span class="arrow"></span>
+		</a>
+	</div>
+
+<!--<footer id="footer">
+		<div class="container">
+			<section>
+            
+				<article class="col-1">
+					<h3>Contact</h3>
+					<ul>
+						<li class="address"><a href="#"><?php echo SCHOOL_ADDRESS;?></a></li>
+						<li class="mail"><a href="#"><?php echo SCHOOL_EMAIL;?></a></li>
+						<li class="phone last"><a href="#"><?php echo CONTACT_PHONE_NUMBER;?></a></li>
+					</ul>
+				</article>
+				<article class="col-2">
+					<h3>School News</h3>
+					<ul>
+                    <?php if($news_List){ 
+            foreach($news_List as $news_List_row){?>
+						<li><a href="<?php echo SITE_URL;?>news-details-<?php echo $news_List_row->id;?>"><?php echo $news_List_row->title;?></a></li>
+						
+                        <? }}else{
+            echo "<div style='text-align:center'><h3>No News Yet</h3></div>";}?>
+					</ul>
+				</article>
+				<article class="col-3">
+					<h3>Social media</h3>
+					<p>You can also find us on social media.</p>
+					<ul>
+						<li class="facebook"><a href="#">Facebook</a></li>
+						<li class="google-plus"><a href="#">Google+</a></li>
+						<li class="twitter"><a href="#">Twitter</a></li>
+						<li class="pinterest"><a href="#">Pinterest</a></li>
+					</ul>
+				</article>
+				<article class="col-4">
+					<h3>Newsletter</h3>
+					<p>Subscribe for news Update.</p>
+					<form action="#">
+						<input placeholder="Email address..." type="text">
+						<button type="submit">Subscribe</button>
+					</form>
+					<ul>
+						<li><a href="#"></a></li>
+					</ul>
+				</article>
+                
+			</section>
+			<p class="copy">Copyright 2017 <?php echo SCHOOL_NAME;?>. Designed by <a href="http://fb.com/ismartola" title="Designed by iSmart Tech" target="_blank">iSmart Tech</a>. All rights reserved.</p>
+		</div>
+		<!-- / container 
+	</footer>
+	<!-- / footer -->
+    
+    
+    
+    <!-- footer -->
+	<div class="footer">
+	<div class="f-bg-w3l">
+		<div class="container">
+			<div class="col-md-4 w3layouts_footer_grid">
+				<h2>Follow <span>Us</span></h2>
+				<ul class="social_agileinfo">
+					<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+					<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+				</ul>
+			</div>
+			<div class="col-md-8 w3layouts_footer_grid">
+				<form action="#" method="post">
+					<input type="email" name="Email" placeholder="Email..." required>
+					<input type="submit" value="">
+				</form>
+				<ul class="w3l_footer_nav">
+					<li><a href="<? echo SITE_URL;?>">Home</a></li>
+					<li><a href="<? echo SITE_URL;?>p-about">About</a></li>
+					<li><a href="<? echo SITE_URL;?>gallery">Gallery</a></li>
+					<li><a href="<? echo SITE_URL;?>news">News</a></li>
+					<li><a href="<? echo SITE_URL;?>events">Events</a></li>
+				</ul>
+				<p>© 2017 <?php echo SCHOOL_NAME;?>. All Rights Reserved | Design by <a href="https://fb.me/ismartola" target="_blank">iSMart Tech</a></p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!-- //footer -->
+    
+    
+    
+    <div id="fancy">
+		<h2>Request information</h2>
+		<form action="" method="post">
+			<div class="left">
+				<fieldset name="email" class="mail"><input name="email" placeholder="Email address..." type="email"></fieldset>
+				<fieldset name="name" class="name"><input name="name" placeholder="Name..." type="text"></fieldset>
+                <fieldset name="phone" class="phone"><input name="phone" placeholder="Phone Number." type="text"></fieldset>
+				
+			</div>
+			<div class="right">
+				<fieldset name="question" class="question"><textarea name="question" placeholder="Question..."></textarea></fieldset>
+			</div>
+			<div class="btn-holder">
+				<button class="btn blue" name="submit_question" type="submit">Send request</button>
+			</div>
+		</form>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script>window.jQuery || document.write("<script src='js/jquery-1.11.1.min.js'>\x3C/script>")</script>
+	<script src="<?php echo SITE_URL;?>js/plugins.js"></script>
+	<script src="<?php echo SITE_URL;?>js/main.js"></script>
+    
+    <script src="<?php echo SITE_URL;?>js/JiSlider.js"></script>
+<script>
+			$(window).load(function () {
+				$('#JiSlider').JiSlider({color: '#fff', start: 3, reverse: true}).addClass('ff')
+			})
+		</script>
+    
+    <!-- flexSlider -->
+	<script defer src="<?php echo SITE_URL;?>js/jquery.flexslider.js"></script>
+	<script type="text/javascript">
+		$(window).load(function(){
+		  $('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			  $('body').removeClass('loading');
+			}
+		  });
+		});
+  </script>
+<!-- //flexSlider -->
+    
+</body>
+</html>
+

@@ -1,0 +1,118 @@
+ <link rel="stylesheet" href="<?php echo SITE_URL;?>result/css/bootstrap.min.css" media="screen" >
+        <link rel="stylesheet" href="<?php echo SITE_URL;?>result/css/font-awesome.min.css" media="screen" >
+        
+	<section class="news">
+		<div class="container">
+			
+            
+            
+            <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+            <div class="panel login-box">
+                            <div class="panel-heading">
+                                <div class="panel-title text-center">
+                                    <h4><?php echo SCHOOL_NAME;?> Result Checker</h4>
+                                </div>
+                            </div>
+                            <div class="panel-body p-20">
+            
+             <form action="result-details" method="post">
+                                	<div class="form-group">
+                                		<label for="rollid">Enter your Reg No</label>
+                                        <input type="text" class="form-control" id="rollid" placeholder="Enter Your Reg No" autocomplete="on" name="rollid">
+                                	</div>
+                               <div class="form-group">
+                                                        <label for="default" class="col-sm-2 control-label">Class</label>
+ <select name="class" class="form-control" id="default" required="required">
+<option value="">Select Class</option>
+<?php 
+$Class_List = $iSMartFUN->getTRows("tblclasses");
+if($Class_List)
+{
+foreach($Class_List as $result)
+{   ?>
+<option value="<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->ClassName); ?> &nbsp; <?php echo htmlentities($result->Section); ?></option>
+<?php }} ?>
+ </select>
+</div>
+
+
+<div class="form-group">
+                                                        <label for="default" class="col-sm-2 control-label">Term</label>
+ <select name="term" class="form-control" id="term" required="required">
+<option value="">Select Term</option>
+<?php 
+$Term_List = $iSMartFUN->getTRows("tblterm");
+if($Term_List)
+{
+foreach($Term_List as $result_Term_List)
+{   ?>
+<option value="<?php echo htmlentities($result_Term_List->id); ?>"><?php echo htmlentities($result_Term_List->term); ?></option>
+<?php }} ?>
+ </select>
+</div>
+
+
+<div class="form-group">
+<label for="default" class="control-label">Session</label>
+ 
+ <select name="sessionid" class="form-control sessionid" id="sessionid" required="required">
+<option value="">Select Session</option>
+<?php for($d=date('Y');$d>=2015;$d--) echo '<option value="'.$d.'">'.$d.'/'.($d+1).'</option>'; ?>
+ </select>
+                                                        </div>
+
+<div class="form-group">
+                                		<label for="rollid">Card S/N</label>
+                                        <input type="text" class="form-control" id="card_sn" placeholder="Enter Scratch Card Serial Number" autocomplete="on" name="card_sn">
+                                	</div>
+
+
+
+<div class="form-group">
+                                		<label for="rollid">Card Pin</label>
+                                        <input type="text" class="form-control" id="card_pin" placeholder="Enter Scratch Card Pin" autocomplete="on" name="card_pin">
+                                	</div>
+
+
+
+    
+                                    <div class="form-group mt-20">
+                                        <div class="">
+                                      
+                                            <button type="submit" class="btn btn-success btn-labeled pull-right">Check Result<span class="btn-label btn-label-right"><i class="fa fa-check"></i></span></button>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+
+                                       
+                                </form>
+
+                               
+
+                            </div>
+                        </div>
+            </div></div>
+            
+            
+            </div>
+            
+            
+            
+            
+            
+		</div>
+		<!-- / container -->
+	</section>
+
+
+
+	<section class="events">
+		<div class="container">
+			
+		</div>
+		<!-- / container -->
+	</section>
+	
+
+	
