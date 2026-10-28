@@ -1,0 +1,405 @@
+<?php
+session_start();
+//error_reporting(0);
+include('../controller/header.php');
+if(strlen($_SESSION['alogin'])=="")
+    {
+	$login_url=''.SITE_URL.'login';   
+    header("Location: $login_url"); 
+    }
+    else{
+		$randNo = rand(11111,99999);
+		$staff_username = "MIS/STA/".$randNo;
+if(isset($_POST['submit']))
+{
+$fullname=$_POST['fullanme'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+$gender = $_POST['gender']; 
+$classid = $_POST['class']; 
+$dob = $_POST['dob'];
+$address = $_POST['address'];
+$employ_date = $_POST['employdate'];
+$salary = $_POST['salary']; 
+$status=1;
+$decipline = $_POST['decipline'];
+$subject_taken = implode(",",$_POST['subject_to_id']);
+
+$InsertData = array(
+			'fullname' => $fullname,
+			'username' =>  $staff_username,
+			'password'=> md5(12345),
+			'phone'=> $phone,
+			'email'=> $email,
+			'address'=> $address,
+			'gender'=> $gender,
+			'salary' => $salary,
+			'employ_date'=> $employ_date,
+			'classid' => $classid,
+			'decipline' => $decipline,
+			'subject_taken' => $subject_taken,
+			'DOB' => $dob,
+			'status' => $status
+			);
+			$insertStaff = $iSMartFUN->insertTable("tblteacher",$InsertData);
+
+if($insertStaff)
+{
+	if(!empty($_FILES)){
+		
+		$targetDir = $_SERVER['DOCUMENT_ROOT']."staff_images/";
+	$fileName = $_FILES['file']['name'];
+	$File_Ext           = substr($fileName, strrpos($fileName, '.')); //get file extention
+	$NewFileName        = $randNo.$File_Ext; //new file name
+	
+	$targetFile = $targetDir.$NewFileName;
+	if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFile)){
+		$db->query("UPDATE tblteacher set photo='$NewFileName' where id='$insertStaff'");	
+	}
+		
+	}
+	
+$msg=" Staff Employed successfully";
+}
+else 
+{
+$error=" Something went wrong. Please try again";
+}
+
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Admin| Employ Teacher </title>
+        <?php include('includes/css.html');?>
+
+    </head>
+    <body class="top-navbar-fixed">
+        <div class="main-wrapper">
+
+            <!-- ========== TOP NAVBAR ========== -->
+  <?php include('includes/topbar.php');?> 
+            <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+            <div class="content-wrapper">
+                <div class="content-container">
+
+                    <!-- ========== LEFT SIDEBAR ========== -->
+                   <?php include('includes/leftbar.php');?>  
+                    <!-- /.left-sidebar -->
+
+                    <div class="main-page">
+
+                     <div class="container-fluid">
+                            <div class="row page-title-div">
+                                <div class="col-md-6">
+                                    <h2 class="title">Employ Teacher</h2>
+                                
+                                </div>
+                                
+                                <!-- /.col-md-6 text-right -->
+                            </div>
+                            <!-- /.row -->
+                            <div class="row breadcrumb-div">
+                                <div class="col-md-6">
+                                    <ul class="breadcrumb">
+                                        <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+                                
+                                        <li class="active">Employ Teacher</li>
+                                    </ul>
+                                </div>
+                             
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <div class="container-fluid">
+                           
+                        <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <div class="panel-title">
+                                                    <h5>Fill the Teacher info</h5>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+<?php if($msg){?>
+<div class="alert alert-success left-icon-alert" role="alert">
+ <strong>Well done!</strong><?php echo htmlentities($msg); ?>
+ </div><?php } 
+else if($error){?>
+    <div class="alert alert-danger left-icon-alert" role="alert">
+                                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                                        </div>
+                                        <?php } ?>
+                                                <form class="" method="post" enctype="multipart/form-data">
+<div class="row">
+<div class="col-md-10">
+<div class="form-group">
+<label for="default" class="control-label">Full Name</label>
+
+<input type="text" name="fullanme" class="form-control" id="fullanme" required>
+
+</div>
+
+
+<div class="row">
+
+
+<div class="col-md-3">
+<div class="form-group">
+<label for="default" class="control-label">Staff ID.</label>
+
+<input type="text" name="staffid" class="form-control" id="staffid" value="<?php echo $staff_username;?>" disabled required autocomplete="off">
+</div>
+</div>
+
+<div class="col-md-9">
+
+<div class="form-group">
+<label for="default" class="control-label">Salary</label>
+<input type="text" name="salary" class="form-control" id="email" required>
+
+</div></div>
+
+</div>
+
+
+</div>
+
+<div class="col-md-2">
+					
+						<div class="item dark">
+						    <img src="../images/small_photo.jpg" alt="." class="w-full" id="TeacherPhoto">
+						    <div class="post-file">
+							<i class="fa fa-camera fa-2x"  style="margin:7px;"></i>
+							<input name="file" id="image" multiple accept="image/*" type="file" onchange="readURL(this);" required>
+							</div>
+						   
+						    
+					
+						
+						
+					</div>
+				</div>
+</div>
+
+
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+
+<label for="gender" class="control-label">Gender</label>
+
+<select name="gender" class="form-control" id="gender" required="required">
+<option value="">Select Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select>
+
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="form-group">
+                                                    <label for="date" class="control-label">Date Of Birth</label>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' id="date" name="dob" class="form-control" required class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+  </div>          </div>
+</div>
+
+
+
+<div class="row">
+<div class="col-md-6">
+
+<div class="form-group">
+<label for="phone" class="control-label">Phone</label>
+
+<input type="text" name="phone" class="form-control" id="phone" required>
+
+</div>
+
+</div>
+
+
+<div class="col-md-6">
+<div class="form-group">
+<label for="default" class="control-label">Email</label>
+<input type="email" name="email" class="form-control" id="email" required>
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+<div class="col-md-6">
+
+<div class="form-group">
+<label for="default" class="control-label">Decipline</label>
+<input type="text" name="decipline" class="form-control" id="email" required>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="form-group">
+<label for="subject_taken" class="control-label">Subject(s) To Take</label>
+<select class="form-control select2" multiple="multiple" name="subject_to_id[]" data-placeholder="Select Subject" style="width: 100%;">
+<?php 
+$subject_list = $iSMartFUN->getTRows("tblsubjects");
+if($subject_list)
+{	
+foreach($subject_list as $subject_result)
+{ 
+?>
+<option value="<?php echo htmlentities($subject_result->id); ?>"><?php echo htmlentities($subject_result->SubjectName); ?> </option>
+<?php } }?>
+                </select>
+
+</div>
+</div>
+
+</div>
+
+<div class="row">
+<div class="col-md-6">
+
+ <div class="form-group">
+  <label for="default" class="control-label">Class</label>
+ <select name="class" class="form-control" id="default" required="required">
+<option value="">Select Class</option>
+<?php 
+$class_list = $iSMartFUN->getTRows("tblclasses");
+if($class_list)
+{
+foreach($class_list as $result)
+{   ?>
+<option value="<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->ClassName); ?>&nbsp; Section-<?php echo htmlentities($result->Section); ?></option>
+<?php }} ?>
+ </select>
+                                                       
+                                                    </div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="form-group">
+                                                    <label for="emplotdate" class="control-label">Date Employed</label>
+                <div class='input-group date' id='datetimepicker2'>
+                    <input type='text' id="emplotdate" name="employdate" class="form-control" required class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+ </div>
+</div>
+
+
+<div class="form-group">
+<label for="address" class="control-label">Address</label>
+
+<textarea rows="5" name="address" class="form-control" required></textarea>
+
+</div>
+
+
+                                                    
+                                                    <div class="form-group">
+                                                        <div class="">
+                                                            <button type="submit" name="submit" class="btn btn-primary">Employ Now</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.col-md-12 -->
+                                </div>
+                    </div>
+                </div>
+                <!-- /.content-container -->
+            </div>
+            <!-- /.content-wrapper -->
+        </div>
+        <!-- /.main-wrapper -->
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <script src="js/pace/pace.min.js"></script>
+        <script src="js/lobipanel/lobipanel.min.js"></script>
+        <script src="js/iscroll/iscroll.js"></script>
+        <script src="js/prism/prism.js"></script>
+        <script src="js/select2/select2.min.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            $(function($) {
+                $(".js-states").select2();
+                $(".js-states-limit").select2({
+                    maximumSelectionLength: 2
+                });
+                $(".js-states-hide").select2({
+                    minimumResultsForSearch: Infinity
+                });
+            });
+        </script>
+        
+        
+        <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+			<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+            <script src="<?php echo SITE_URL;?>css/select2/select2.full.min.js"></script>
+   
+<script type="text/javascript">
+            $(function () {
+				
+				$('#datetimepicker1').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY/MM/DD'
+            });
+			
+			
+			$('#datetimepicker2').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY/MM/DD'
+            });
+			
+			   $(".select2").select2();  
+            });
+			
+			
+        </script>
+        <script>
+     function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#TeacherPhoto')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(150)
+						.addClass("circular--portrait");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
+        
+    </body>
+</html>
+<?PHP } ?>

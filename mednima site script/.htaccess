@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+ErrorDocument 400 http://www.mednima.com/error
+ErrorDocument 401 http://www.mednima.com/error
+ErrorDocument 403 http://www.mednima.com/error
+ErrorDocument 404 http://www.mednima.com/error
+ErrorDocument 500 http://www.mednima.com/error
+
+
+RewriteRule ^error$ 404.php [L]
+RewriteRule ^login$ engine/auth.php [L]
+RewriteRule ^events$ engine/ismartpage.php?ismart=events [L]
+RewriteRule ^book-tutor$ engine/ismartpage.php?ismart=book-tutor [L]
+RewriteRule ^news$ engine/ismartpage.php?ismart=news [L]
+RewriteRule ^news-details-(.*)$ engine/ismartpage.php?ismart=news-details&id=$1 [L]
+RewriteRule ^event-details-(.*)$ engine/ismartpage.php?ismart=event-details&id=$1 [L]
+RewriteRule ^p-(.*)$ engine/ismartpage.php?ismart=pages&slug=$1 [L]
+RewriteRule ^teachers$ engine/ismartpage.php?ismart=teachers [L]
+RewriteRule ^gallery$ engine/ismartpage.php?ismart=gallery [L]
+RewriteRule ^check-result$ engine/ismartpage.php?ismart=check-result [L]
+RewriteRule ^result-details$ engine/ismartpage.php?ismart=result-details [L]
+RewriteRule ^admin-home$ admin/dashboard.php [L]
+RewriteRule ^student-home$ student/engine/home.php [L]
+RewriteRule ^student/test/(.*)/subject$ exam/test-subjects.php?slug=$1 [L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d [NC]
+RewriteCond %{REQUEST_FILENAME} !-f [NC]
+RewriteCond %{REQUEST_FILENAME} !-l [NC]
+</IfModule>
