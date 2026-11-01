@@ -62,12 +62,10 @@ if(isset($_POST["action"]) && !empty($_POST["action"]))
 			$ErrorMsg =  "Invalid Login Details!";
 		}else{
 		
-			session_start();
 			$_SESSION['loginNow'] = 1;
 			$_SESSION[$session] = $login_query->$id;
 		//$db->query("UPDATE $type last_login ='$date' WHERE $id='".$id."'");
 		
-		ob_end_clean(); // Delete the buffer.
 		$url=''.SITE_URL.$home;
         header("Location: $url");
         exit();
