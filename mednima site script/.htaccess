@@ -20,7 +20,10 @@ RewriteRule ^gallery$ engine/ismartpage.php?ismart=gallery [L]
 RewriteRule ^check-result$ engine/ismartpage.php?ismart=check-result [L]
 RewriteRule ^result-details$ engine/ismartpage.php?ismart=result-details [L]
 RewriteRule ^admin-home$ admin/index.php [L]
-RewriteRule ^student-home$ student/engine/home.php [L]
+RewriteRule ^staff$ staff/index.php [L]
+RewriteRule ^staff-home$ staff/index.php [L,QSA]
+RewriteRule ^student-home$ student/index.php [L,QSA]
+RewriteRule ^parent-home$ parent/index.php [L,QSA]
 RewriteRule ^student/test/(.*)/subject$ exam/test-subjects.php?slug=$1 [L]
 
 

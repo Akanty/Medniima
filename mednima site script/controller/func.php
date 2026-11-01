@@ -10,7 +10,12 @@ class Ismart_Controller {
 		
 		if( strlen( $text) > 200) {
     $str = explode( "\n", wordwrap( $text, 200));
-    return $str[0] . " <a href=".SITE_URL.$link.">Read more</a>";
+    $slug = preg_replace('/^(pages-|p-)/', '', $link);
+		$page_condition['where'] = array('slug' => $slug);
+		$page_condition['return_type'] = 'single';
+		$page = $this->getTRows('tblpages', $page_condition);
+		$read_more = $page ? ' <a href="' . SITE_URL . 'p-' . rawurlencode($slug) . '">Read more</a>' : '';
+		return $str[0] . $read_more;
 }
 		
 	}

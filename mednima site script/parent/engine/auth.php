@@ -51,7 +51,7 @@ if(isset($_POST["action"]) && !empty($_POST["action"]))
 		//$db->query("UPDATE $type last_login ='$date' WHERE $id='".$id."'");
 		
 		ob_end_clean(); // Delete the buffer.
-		$url=''.SITE_URL.'staff-home';
+		$url=''.SITE_URL.'parent-home';
         header("Location: $url");
         exit();
 			
