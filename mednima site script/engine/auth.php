@@ -62,7 +62,6 @@ if(isset($_POST["action"]) && !empty($_POST["action"]))
 			$ErrorMsg =  "Invalid Login Details!";
 		}else{
 		
-			$_SESSION['loginNow'] = 1;
 			$_SESSION[$session] = $login_query->$id;
 		//$db->query("UPDATE $type last_login ='$date' WHERE $id='".$id."'");
 		

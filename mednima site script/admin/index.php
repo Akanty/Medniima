@@ -45,18 +45,6 @@ if(strlen($_SESSION['alogin'])=="")
                       
                         </div>
                         <!-- /.container-fluid -->
-                        
-                        <? if(strlen($_SESSION['loginNow'])!=""){?>
-                        
-                        <div id="loader-wrapper">
-			<div id="loader"></div>
-
-			<div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
-
-		</div>
-        <? } unset($_SESSION['loginNow']);?>
-
                         <section class="section">
                             <div class="container-fluid">
                                 <div class="row">
