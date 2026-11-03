@@ -20,17 +20,14 @@ if(isset($_POST["action"]) && !empty($_POST["action"]))
 			switch($accnt_type){
 			case 0: 
 			$table = "tblstudents";
-			$get_condition['where'] = array('password' =>md5($password));
-			$get_condition['where'] = array('RollId' =>$username);
+			$get_condition['where'] = array('password' => md5($password), 'RollId' => $username);
 			$id = "StudentId";
 			$home = "student";
 			$session = "slogin";
 			break;
 			case 1:	
 			$table = "tblteacher";
-			
-			$get_condition['where'] = array('password' =>md5($password));
-			$get_condition['where'] = array('username' =>$username);
+			$get_condition['where'] = array('password' => md5($password), 'username' => $username);
 			
 			$id = "id";
 			$home = "staff";
@@ -41,14 +38,11 @@ if(isset($_POST["action"]) && !empty($_POST["action"]))
 			$id = "id";
 			$session = "plogin";
 			$home = "parent";
-			$get_condition['where'] = array('password' =>md5($password));
-			$get_condition['where'] = array('username' =>$username);
+			$get_condition['where'] = array('password' => md5($password), 'username' => $username);
 			break;
 			case 3:	
 			$table = "admin";
-			
-			$get_condition['where'] = array('UserName' =>$username);
-			$get_condition['where'] = array('Password' =>md5($password));
+			$get_condition['where'] = array('UserName' => $username, 'Password' => md5($password));
 			
 			$id = "id";
 			$home = "admin"; 

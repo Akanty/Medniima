@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('../controller/header.php');
-if(strlen($_SESSION['alogin'])=="")
+if (empty($_SESSION['alogin']))
     {   
     header("Location: index.php"); 
     }

@@ -1,9 +1,8 @@
-
 <?php
 session_start();
 error_reporting(0);
 include('../controller/header.php');
-if(strlen($_SESSION['alogin'])=="")
+if (empty($_SESSION['alogin']))
     {   
 	$login_url=''.SITE_URL.'login';   
     header("Location: $login_url"); 
