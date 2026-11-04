@@ -9,7 +9,7 @@
 			<div class="main-content">
 				<h1>Upcoming events</h1>
 				<section class="posts-con">
-					<? if($event_list){
+					<?php if($event_list){
                     foreach($event_list as $event_list_row){?>
                     
                     <article>
@@ -23,7 +23,7 @@
 							<p><?php echo $event_list_row->content;?></p>
 						</div>
 					</article>
-                    <? }}else{
+                    <?php }}else{
                     echo "<div style='text-align:center'><h3>No Upcoming Event For Now</h3></div>";
                     }?>
 					

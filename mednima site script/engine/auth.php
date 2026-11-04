@@ -59,7 +59,7 @@ if(isset($_POST["action"]) && !empty($_POST["action"]))
 			$_SESSION[$session] = $login_query->$id;
 		//$db->query("UPDATE $type last_login ='$date' WHERE $id='".$id."'");
 		
-		$url=''.SITE_URL.$home;
+		$url = '/' . $home . '/';
         header("Location: $url");
         exit();
 			

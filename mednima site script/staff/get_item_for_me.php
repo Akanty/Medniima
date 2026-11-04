@@ -73,7 +73,7 @@ if(!empty($_POST["classid1"]))
 ?>
 
 
-<?
+<?php
 // Code for Subjects
 if(!empty($_POST["getclassSubject"])) 
 {
@@ -95,7 +95,7 @@ if(!empty($_POST["getclassSubject"]))
  
  <select name="subject_id" class="form-control" id="subject_id" required="required">
  <option value="">Select Subject</option>
- <? while($row = $stmt->fetch_object())
+ <?php while($row = $stmt->fetch_object())
  {?>
  <option value="<?php echo htmlentities($row->id); ?>"><?php echo htmlentities($row->SubjectName); ?></option>
   
@@ -104,7 +104,7 @@ if(!empty($_POST["getclassSubject"]))
   </select>
  </div> 
  
-<? }
+<?php }
 }}
 
 

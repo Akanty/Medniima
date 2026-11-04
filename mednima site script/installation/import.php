@@ -97,5 +97,5 @@ Please check your database entries</p>
 </div>
 
 
-<? }
+<?php }
 ?>

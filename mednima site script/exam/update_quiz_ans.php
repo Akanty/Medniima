@@ -54,13 +54,13 @@ if(!empty($_POST["studentid"]))
 	
 	<div class="result-bg text-center">
                     <img class="img-responsive" src="/images/result.png">
-                    <p>You Scored <span><? echo $student_total_score;?> / <? echo $total_question;?></span> in <? echo $subject;?></p>
+                    <p>You Scored <span><?php echo $student_total_score;?> / <?php echo $total_question;?></span> in <?php echo $subject;?></p>
                    
                 </div>
                 
                 
                 
-                <?  for($j=0; $j<count($question_id);$j++){
+                <?php  for($j=0; $j<count($question_id);$j++){
 					$qid = ($j+1);
 	$Quection_check_condtion['where'] = array('id' => $question_id[$j]);
 	$Quection_check_condtion['return_type'] = 'single'; 
@@ -79,9 +79,9 @@ if(!empty($_POST["studentid"]))
                
                 <div class="rslt-bg">
                         <div class="result-hdr">
-                            <h4>Question <? echo $qid;?>  </h4>
+                            <h4>Question <?php echo $qid;?>  </h4>
                         </div>
-                                                <? echo $Question_Details->Question;?>
+                                                <?php echo $Question_Details->Question;?>
                         <br>
                         <div class="space"></div>
                         <ul>
@@ -93,37 +93,37 @@ if(!empty($_POST["studentid"]))
                             
 
                             <div class="radio-holder text- ">
-                                A. <label for="radio10"><? echo $Question_Details->Option_A;?> <span class=" "></span> </label>
+                                A. <label for="radio10"><?php echo $Question_Details->Option_A;?> <span class=" "></span> </label>
                             </div>
                             <div class="radio-holder text- ">
-                                B. <label for="radio20"><? echo $Question_Details->Option_B;?> <span class=" "></span> </label>
+                                B. <label for="radio20"><?php echo $Question_Details->Option_B;?> <span class=" "></span> </label>
                             </div>
                             <div class="radio-holder text- ">
-                                C. <label for="radio30"><? echo $Question_Details->Option_C;?> </label>
+                                C. <label for="radio30"><?php echo $Question_Details->Option_C;?> </label>
                             </div>
-                             <? if($Question_Details->Option_D!=''){ ?>
+                             <?php if($Question_Details->Option_D!=''){ ?>
                             <div class="radio-holder text- ">
-                                D. <label for="radio40"><? echo $Question_Details->Option_D;?> <span class=" "></span> </label>
+                                D. <label for="radio40"><?php echo $Question_Details->Option_D;?> <span class=" "></span> </label>
                             </div> 
-                            <? }?>
+                            <?php }?>
                             
-                            <? if($Question_Details->Option_E!=''){ ?>
+                            <?php if($Question_Details->Option_E!=''){ ?>
                              <div class="radio-holder text- ">
-                                E. <label for="radio40"><? echo $Question_Details->Option_E;?> <span class=" "></span> </label>
+                                E. <label for="radio40"><?php echo $Question_Details->Option_E;?> <span class=" "></span> </label>
                             </div> 
-                            <? }?>
+                            <?php }?>
                                                    
                         </ul>
 
                         <hr> 
-                        <span class="grey">You Chose: </span><span class="text-danger"> <? echo $student_ans;?></span>  <br>
-                        <span class="grey">Correct Answer is:</span> <? echo $Question_Details->Answer;?> <br>
+                        <span class="grey">You Chose: </span><span class="text-danger"> <?php echo $student_ans;?></span>  <br>
+                        <span class="grey">Correct Answer is:</span> <?php echo $Question_Details->Answer;?> <br>
 
                         <div class="space10"></div>
                         <div class="question-text">
                             <div class="explain"> <span class="labelmi label-exams">Explanation</span></div>                                    
                             
-                                                                                    <span class="text-info"><? echo $Question_Details->Answer;?> is the correct option.</span>                                                                                </div>
+                                                                                    <span class="text-info"><?php echo $Question_Details->Answer;?> is the correct option.</span>                                                                                </div>
 
                         <!--<div class="accordion" id="my-accordion">
                             <div class="accordion-group">
@@ -133,16 +133,16 @@ if(!empty($_POST["studentid"]))
                                 <div class="accordion-body collapse" id="collapse-0">
                                     <div class="accordion-inner">
                                         <form class="contact0" name="contact0" onsubmit="return false;">
-                                            <input type="hidden" name="details" value="<? echo $Question_Details->Question;?><br>
-                                                OptionA: <? echo $Question_Details->Option_A;?><br>
-                                                OptionB: <? echo $Question_Details->Option_B;?><br>
-                                                OptionC: <? echo $Question_Details->Option_C;?><br>
-                                                OptionD: <? echo $Question_Details->Option_D;?><br>
-                                                OptionE: <? echo $Question_Details->Option_E;?><br>
+                                            <input type="hidden" name="details" value="<?php echo $Question_Details->Question;?><br>
+                                                OptionA: <?php echo $Question_Details->Option_A;?><br>
+                                                OptionB: <?php echo $Question_Details->Option_B;?><br>
+                                                OptionC: <?php echo $Question_Details->Option_C;?><br>
+                                                OptionD: <?php echo $Question_Details->Option_D;?><br>
+                                                OptionE: <?php echo $Question_Details->Option_E;?><br>
                                                 Ans Choose: <br>
-                                                Correct Ans: <? echo $Question_Details->Answer;?>">
+                                                Correct Ans: <?php echo $Question_Details->Answer;?>">
                                            
-                                           <input type="hidden" name="id" value="<? echo $question_id[$j];?>">
+                                           <input type="hidden" name="id" value="<?php echo $question_id[$j];?>">
                                            
                                             <textarea name="message" id="message" class="form-control" placeholder="Comment"></textarea>
                                             <button type="submit" id="report0" class="btn-xs btn-success btn-right">Submit</button>
@@ -154,11 +154,11 @@ if(!empty($_POST["studentid"]))
                     </div>
 
     
-    <? }?>
+    <?php }?>
     
     
 	
-<? }
+<?php }
   
   
   ?>

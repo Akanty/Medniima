@@ -165,7 +165,7 @@ TEL: <?php echo CONTACT_PHONE_NUMBER;?><br /><br />
                 <div class="col-xs-5"><strong>Term:</strong> <?php echo htmlentities($Term_name->term);?>
                 </div>
                 
-              <div class="col-xs-5"><strong>Section</strong> <? echo $sessionid."/".($sessionid+1);?></div>
+              <div class="col-xs-5"><strong>Section</strong> <?php echo $sessionid."/".($sessionid+1);?></div>
                 
                 
                 <div class="col-xs-2"><img src="<?php echo SITE_URL."student_passport/".$row->photo;?>" alt="." height="70" width="70"></div>
@@ -193,10 +193,10 @@ $cnt=1;
 if($queryResult->num_rows < 1)
 { ?>     
 <div class="alert alert-warning left-icon-alert text-center" role="alert">
-                                            <strong>Notice!</strong> Your <? echo $sessionid."/".($sessionid+1);?>  <?php echo htmlentities($Term_name->term);?> result is not yet available</div>
+                                            <strong>Notice!</strong> Your <?php echo $sessionid."/".($sessionid+1);?>  <?php echo htmlentities($Term_name->term);?> result is not yet available</div>
  
                                         
-<? }else{ ?>
+<?php }else{ ?>
 
 
  <div class="panel-body p-20">
@@ -229,7 +229,7 @@ if($queryResult->num_rows < 1)
 	
 	
 	
-<?
+<?php
 if($check_card_Row_used){
 //update scartch card useage
 $db->query("update tblscracth_card_use set time_used=time_used+1 where card_id ='$check_card_Row->id'");
@@ -283,10 +283,10 @@ echo htmlentities("Invalid Reg No $rollid");
                                                 
                                                 
                             
-                            <? if($queryResult->num_rows > 0)
+                            <?php if($queryResult->num_rows > 0)
 {?><br />
                                           <a href="#" onclick="PrintDiv();" class="btn btn-danger pull-right"><i class="fa fa-print"></i> Print</a>
-   <? }?>                                        
+   <?php }?>                                        
                                             
                                         </div>
                                         <!-- /.panel -->
@@ -327,7 +327,7 @@ echo htmlentities("Invalid Reg No $rollid");
        var divToPrint = document.getElementById('divToPrint');
        var popupWin = window.open('', '_blank', 'width=600,height=600');
        popupWin.document.open();
-       popupWin.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title><?php echo $student_datail_list->StudentName;?> | <? echo $sessionid."/".($sessionid+1);?>  <?php echo htmlentities($Term_name->term);?> Result</title><meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"><link rel="stylesheet" href="<?php echo SITE_URL;?>res/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"><link rel="stylesheet" href="<?php echo SITE_URL;?>res/css/AdminLTE.min.css"></head><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+       popupWin.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title><?php echo $student_datail_list->StudentName;?> | <?php echo $sessionid."/".($sessionid+1);?>  <?php echo htmlentities($Term_name->term);?> Result</title><meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"><link rel="stylesheet" href="<?php echo SITE_URL;?>res/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"><link rel="stylesheet" href="<?php echo SITE_URL;?>res/css/AdminLTE.min.css"></head><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
         popupWin.document.close();
             }
  </script>

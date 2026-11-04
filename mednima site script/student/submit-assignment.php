@@ -171,12 +171,12 @@ id="my-dropzone">
                                     <div class="form-group mt-20">
                                         <div class="">
                                       
-                                            <? if(!$assignment_check){ ?>
+                                            <?php if(!$assignment_check){ ?>
                                             <button type="submit" id="submit-Now" class="btn btn-success btn-labeled pull-right">Submit Assignment<span class="btn-label btn-label-right"><i class="fa fa-check"></i></span></button>
-                                            <? }else{ ?>
+                                            <?php }else{ ?>
 												
 												<button type="submit" id="submit-Now" class="btn btn-success btn-labeled pull-right">Resubmit Assignment<span class="btn-label btn-label-right"><i class="fa fa-check"></i></span></button>
-											<? }?>
+											<?php }?>
                                             
                                             
                                             <div class="clearfix"></div>
@@ -265,4 +265,4 @@ Dropzone.options.myDropzone = {
 </body>
 </html>
 
-<? }?>
+<?php }?>

@@ -179,15 +179,15 @@ else if($error){?>
 
 <select name="title" class="form-control" id="title" required="required">
 
-<? 
+<?php 
 $Parent_title = array("Mr","Mrs","Alh","Hajia","Mal","Cheif","Doc",);
 foreach($Parent_title as $Parent_t){
 if($parent_query->title == $Parent_t){
 ?>
-<option value="<? echo $Parent_t;?>" selected><? echo $Parent_t;?></option>
-<? }else{?>
-<option value="<? echo $Parent_t;?>"><? echo $Parent_t;?></option>
-<? }}?>
+<option value="<?php echo $Parent_t;?>" selected><?php echo $Parent_t;?></option>
+<?php }else{?>
+<option value="<?php echo $Parent_t;?>"><?php echo $Parent_t;?></option>
+<?php }}?>
 
 </select>
 </div>
@@ -198,7 +198,7 @@ if($parent_query->title == $Parent_t){
 <div class="form-group">
 <label for="default" class="control-label">First Name</label>
 
-<input type="text" name="fanme" placeholder="First Name" value="<? echo htmlentities(ucwords($parent_name[0]));?>" class="form-control" id="fullanme" required>
+<input type="text" name="fanme" placeholder="First Name" value="<?php echo htmlentities(ucwords($parent_name[0]));?>" class="form-control" id="fullanme" required>
 </div>
 </div>
 
@@ -206,7 +206,7 @@ if($parent_query->title == $Parent_t){
 <div class="form-group">
 <label for="default" class="control-label">Last Name</label>
 
-<input type="text" name="lanme" class="form-control" value="<? echo htmlentities(ucwords($parent_name[1]));?>" placeholder="Last Name" id="fullanme" required>
+<input type="text" name="lanme" class="form-control" value="<?php echo htmlentities(ucwords($parent_name[1]));?>" placeholder="Last Name" id="fullanme" required>
 </div>
 </div>
 
@@ -220,7 +220,7 @@ if($parent_query->title == $Parent_t){
 <div class="form-group">
 <label for="default" class="control-label">Parent No.</label>
 
-<input type="text" name="username" class="form-control" id="username" value="<? echo htmlentities($parent_query->username);?>" disabled required>
+<input type="text" name="username" class="form-control" id="username" value="<?php echo htmlentities($parent_query->username);?>" disabled required>
 
 </div>
 </div>
@@ -238,10 +238,10 @@ if($gndr=="Male")
 ?>
 <option value="Male" selected>Male</option>
 <option value="Female">Female</option>
-<? }else{ ?>
+<?php }else{ ?>
 <option value="Female" selected>Female</option>
 <option value="Male">Male</option>
-<? }?>
+<?php }?>
 </select>
 </div></div>
 
@@ -249,7 +249,7 @@ if($gndr=="Male")
 <div class="col-md-4">
  <div class="form-group">
                                                     <label for="Occupation"  class="control-label">Occupation</label>
-                <input type="text" value="<? echo htmlentities($parent_query->occupation);?>" name="occupation" class="form-control" placeholder="Occupation" id="Occupation" required>
+                <input type="text" value="<?php echo htmlentities($parent_query->occupation);?>" name="occupation" class="form-control" placeholder="Occupation" id="Occupation" required>
             </div>
 </div>
 
@@ -262,11 +262,11 @@ if($gndr=="Male")
 
  <div class="col-md-4 form-group">
               <label class="control-label">Phone Number</label>
-              <input type="text" name="phone" class="form-control" value="<? echo htmlentities($parent_query->phone);?>" placeholder="Phone Number" required>
+              <input type="text" name="phone" class="form-control" value="<?php echo htmlentities($parent_query->phone);?>" placeholder="Phone Number" required>
             </div>
             <div class="col-md-4 form-group form-last">
               <label class="control-label">Email</label>
-              <input type="text" name="email" class="form-control" value="<? echo htmlentities($parent_query->email);?>" placeholder="Parent Email Address" required>
+              <input type="text" name="email" class="form-control" value="<?php echo htmlentities($parent_query->email);?>" placeholder="Parent Email Address" required>
             </div>
    
    
@@ -285,10 +285,10 @@ $pta_post_detail = $iSMartFUN->getTRows("tblpta_excos",$pta_list_condtion);
 ?>
 <option value="1" selected>Yes</option>
 <option value="0">No</option>
-<? }else{ ?>
+<?php }else{ ?>
 <option value="0" selected>No</option>
 <option value="1">Yes</option>
-<? }?>
+<?php }?>
 </select>
             </div>
             
@@ -305,16 +305,16 @@ $pta_post_detail = $iSMartFUN->getTRows("tblpta_excos",$pta_list_condtion);
 
  <div class="col-md-4 form-group">
               <label class="control-label">State of Origin</label>
-              <input type="text" name="state" class="form-control" value="<? echo htmlentities($parent_query->state);?>" placeholder="State of Origin" required>
+              <input type="text" name="state" class="form-control" value="<?php echo htmlentities($parent_query->state);?>" placeholder="State of Origin" required>
             </div>
             <div class="col-md-4 form-group form-last">
               <label class="control-label">Local Govt.</label>
-              <input type="text" name="LGA" class="form-control"  value="<? echo htmlentities($parent_query->LGA);?>"placeholder="Local Govt." required>
+              <input type="text" name="LGA" class="form-control"  value="<?php echo htmlentities($parent_query->LGA);?>"placeholder="Local Govt." required>
             </div>
             
             <div class="col-md-4 form-group form-last">
               <label class="control-label">Town</label>
-              <input type="text" name="town" class="form-control" value="<? echo htmlentities($parent_query->town);?>" placeholder="Town" required>
+              <input type="text" name="town" class="form-control" value="<?php echo htmlentities($parent_query->town);?>" placeholder="Town" required>
             </div>
             
             </div>
@@ -326,7 +326,7 @@ $pta_post_detail = $iSMartFUN->getTRows("tblpta_excos",$pta_list_condtion);
    <div class="form-group">
 <label for="address" class="control-label">Home Address</label>
 
-<textarea rows="5" name="address" class="form-control" required><? echo htmlentities($parent_query->address);?></textarea>
+<textarea rows="5" name="address" class="form-control" required><?php echo htmlentities($parent_query->address);?></textarea>
 
 </div>                                                 
  </fieldset>  
@@ -348,10 +348,10 @@ if($school_ref=="1")
 ?>
 <option value="1" selected>M.I.S Badawa Layout Branch</option>
 <option value="2">M.I.S Kawo Lambu Branch</option>
-<? }else{ ?>
+<?php }else{ ?>
 <option value="2" selected>M.I.S Kawo Lambu Branch</option>
 <option value="1">M.I.S Badawa Layout Branch</option>
-<? }?>
+<?php }?>
 </select>
             </div>
             
@@ -373,7 +373,7 @@ if(in_array($result->StudentId, $children_in)) {
 
 <option value="<?php echo htmlentities($result->StudentId); ?>" selected><?php echo htmlentities($result->StudentName); ?> - &nbsp;<?php echo htmlentities($class_detail->ClassName); ?> </option>
 
-<? }else{?>
+<?php }else{?>
 
 
 <option value="<?php echo htmlentities($result->StudentId); ?>"><?php echo htmlentities($result->StudentName); ?> - &nbsp;<?php echo htmlentities($class_detail->ClassName); ?></option>
@@ -505,7 +505,7 @@ PTAPost();
         
     </body>
 </html>
-<?PHP }else{
+<?php }else{
 echo "parent not found";	
 	
 }} ?>

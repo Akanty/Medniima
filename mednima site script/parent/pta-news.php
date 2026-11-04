@@ -42,7 +42,7 @@ include("design/nav.html");
     
     
     <div class="asked">
-<?	
+<?php	
 $pTAnews_list = $iSMartFUN->getTRows("tblptanews");
 
 $cnt=1;

@@ -89,7 +89,7 @@ if($query->num_rows < 1){
                                                     
                                                     <tbody>
                                                     
-<? while($assignment_view_result = $query->fetch_object()){
+<?php while($assignment_view_result = $query->fetch_object()){
 	$query11 =$db->query("SELECT id from tblsubmited_assignment where assignment_id='$assignment_view_result->assignment_id' and student_id='$assignment_view_result->StudentId'");
 	?>
 	<tr>
@@ -123,7 +123,7 @@ else{
                                                                 ?></td>
 
 </tr>	
-<? $cnt=$cnt+1; }?>
+<?php $cnt=$cnt+1; }?>
 
 
                               </tbody>
@@ -131,7 +131,7 @@ else{
                  
                                             </div>
                                         </div>
-<? }?>
+<?php }?>
                                         
                                         
                                         
@@ -175,6 +175,6 @@ else{
         
 
 
-<?
+<?php
 include("design/footer.html");
 ?>

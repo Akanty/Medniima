@@ -142,7 +142,7 @@ foreach($page_list as $result)
                                                 		</div>
                                                 	</div>
                                                     
-<? }}?>
+<?php }}?>
                                                     
                                                     
                                                        
@@ -215,7 +215,7 @@ $(function () {
 });
 </script>             
   
- <? }}?> 
+ <?php }}?> 
         <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
     </body>
 </html>

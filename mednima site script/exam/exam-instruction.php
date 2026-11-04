@@ -69,12 +69,12 @@ include($_SERVER['DOCUMENT_ROOT']."/student/design/nav.html");
                 <div class="row">
                     <div class="col-md-6">
                         <div class="details-bg text-center">
-                            Test: <span class="bold"></span><? echo $exam_name;?>                       </div>
+                            Test: <span class="bold"></span><?php echo $exam_name;?>                       </div>
                     </div>
                     
                     <div class="col-md-6">
                         <div class="details-bg text-center">
-                            Time: <span id="time_limit1" class="bold"><? echo $iSMartFUN->minutes2(EXAM_TIME);?></span>
+                            Time: <span id="time_limit1" class="bold"><?php echo $iSMartFUN->minutes2(EXAM_TIME);?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -82,7 +82,7 @@ include($_SERVER['DOCUMENT_ROOT']."/student/design/nav.html");
                          Subject:                       
                             <span class="bold">
                                
-                                <? echo $subject_name;?>                            </span>
+                                <?php echo $subject_name;?>                            </span>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -116,7 +116,7 @@ include($_SERVER['DOCUMENT_ROOT']."/student/design/nav.html");
                                 <div class="col-md-9">
                                     <div class="input-group input-group-md">
 <select name="examtime" class="form-control Time_limit" id="examtime"  required="required" onchange="changeTime(this)">
-<? 
+<?php 
 
 
 $time_List = array("00:00:60","00:05:00","00:10:00","00:15:00","00:20:00","00:30:00","00:45:00","00:50:00","01:00:00","01:15:00","01:45:00","02:00:00","02:15:00","02:30:00","02:45:00","03:00:00","03:30:00","04:00:00");
@@ -124,10 +124,10 @@ foreach($time_List as $Option_t){
 if(EXAM_TIME == $Option_t){
 	
 ?>
-<option value="<? echo $Option_t;?>" selected><? echo $iSMartFUN->minutes2($Option_t);?></option>
-<? }else{?>
-<option value="<? echo $Option_t;?>"><? echo $iSMartFUN->minutes2($Option_t);?></option>
-<? }}?>
+<option value="<?php echo $Option_t;?>" selected><?php echo $iSMartFUN->minutes2($Option_t);?></option>
+<?php }else{?>
+<option value="<?php echo $Option_t;?>"><?php echo $iSMartFUN->minutes2($Option_t);?></option>
+<?php }}?>
 
 </select>
 </div>                                </div>
@@ -139,7 +139,7 @@ if(EXAM_TIME == $Option_t){
                 <ul>
                     <li>There are <b><span id="question_id">5</span> questions</b> and you are expected to
                         attempt all.</li>
-                    <li>The maximum time allowed for this test is <b><span id="time_limit2"><? echo $iSMartFUN->minutes2(EXAM_TIME);?></span></b>.</li>
+                    <li>The maximum time allowed for this test is <b><span id="time_limit2"><?php echo $iSMartFUN->minutes2(EXAM_TIME);?></span></b>.</li>
                     <li>If you do not have an instant idea of a question you can skip it by clicking on the next button,
                         you can re-attempt the skipped question when you have attempted others.
                     </li>

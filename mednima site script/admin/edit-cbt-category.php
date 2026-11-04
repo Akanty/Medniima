@@ -165,7 +165,7 @@ else if($error){?>
                                                     <div class="form-group has-success">
                                                         <label for="success" class="control-label">Exam Name</label>
                                                 		<div class="">
-                                                			<input type="text" name="examname" value="<? echo $Cat_query->name;?>" class="form-control" required id="success">
+                                                			<input type="text" name="examname" value="<?php echo $Cat_query->name;?>" class="form-control" required id="success">
                                                             <span class="help-block">Eg- JAMB, WAEC,NECO etc</span>
                                                 		</div>
                                                 	</div>
@@ -173,7 +173,7 @@ else if($error){?>
                                                      <div class="form-group has-success">
                                                         <label for="success" class="control-label">Exam Fullname</label>
                                                         <div class="">
-                                                            <input type="text" name="exam_fullname" value="<? echo $Cat_query->fullname;?>" class="form-control" required id="success">
+                                                            <input type="text" name="exam_fullname" value="<?php echo $Cat_query->fullname;?>" class="form-control" required id="success">
                                                             <span class="help-block">Eg- West African Examinations Council</span>
                                                         </div>
                                                     </div>
@@ -189,10 +189,10 @@ if($str=="1")
 ?>
 <option value="1" selected>Release</option>
 <option value="0">Suspend</option>
-<? }else{ ?>
+<?php }else{ ?>
 <option value="0" selected>Suspend</option>
 <option value="1">Release</option>
-<? }?>                                                 
+<?php }?>                                                 
 </select>
                                                     
      </div>
@@ -202,7 +202,7 @@ if($str=="1")
                  <div class="col-md-2">
                  
                  <div class="item dark">
-						    <img src="<? echo SITE_URL."exam/images/".$Cat_query->img;?>"  class="w-full" id="ExamLogo">
+						    <img src="<?php echo SITE_URL."exam/images/".$Cat_query->img;?>"  class="w-full" id="ExamLogo">
 						    <div class="post-file">
 							<i class="fa fa-camera fa-2x"  style="margin:7px;"></i>
 							<input name="file" id="image" multiple accept="image/*" type="file" onchange="readURL(this);">

@@ -81,7 +81,7 @@ foreach($card_list as $result)
               <h5 class="widget-user-desc">Result Scratch Card</h5>
             </div>
             <div class="widget-user-image">
-              <img class="img-circle" src="<?php echo SITE_URL;?>images/<? echo SCHOOL_LOGO;?>">
+              <img class="img-circle" src="<?php echo SITE_URL;?>images/<?php echo SCHOOL_LOGO;?>">
             </div>
             <div class="box-footer">
               <div class="row">

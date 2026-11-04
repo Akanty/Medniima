@@ -52,7 +52,7 @@ $query_sub = $db->query("SELECT quiz_subjectcombination.CatId, quiz_subjectcombi
         
            <div class="row">
             
-            <? if($query_sub->num_rows > 0){
+            <?php if($query_sub->num_rows > 0){
 				while($Quiz_sub = $query_sub->fetch_object() ){
 				$Count_question = $db->query("SELECT count(id) as total_question FROM `quiz_questions` WHERE sub_id='$Quiz_sub->subject_id'");
 	$Count_total_question = $Count_question->fetch_object();
@@ -65,7 +65,7 @@ $query_sub = $db->query("SELECT quiz_subjectcombination.CatId, quiz_subjectcombi
                             <h3><?php echo $Quiz_sub->subject_name;?></h3>
                             <p><?php echo $Quiz_sub->subject_desc;?> </p>
                             <hr>
-                            <img class="img-responsive" src="<? echo SITE_URL;?>exam/images/<?php echo $Quiz_cat_List->img;?>" alt="">
+                            <img class="img-responsive" src="<?php echo SITE_URL;?>exam/images/<?php echo $Quiz_cat_List->img;?>" alt="">
                         </div>
                         <table class="table table-responsive">
                             <tbody>
@@ -77,7 +77,7 @@ $query_sub = $db->query("SELECT quiz_subjectcombination.CatId, quiz_subjectcombi
                                 <tr>
                                     <td><i class="fa fa-clock-o fa-2x"></i></td>
                                     <td>Duration</td>
-                                    <td><? echo $iSMartFUN->minutes2(EXAM_TIME);?></td> 
+                                    <td><?php echo $iSMartFUN->minutes2(EXAM_TIME);?></td> 
                                 </tr>
                             </tbody>
                         </table>
@@ -89,7 +89,7 @@ $query_sub = $db->query("SELECT quiz_subjectcombination.CatId, quiz_subjectcombi
                         <input type="hidden" name="subject_name" value="<?php echo $Quiz_sub->subject_name;?>" />
                         <input type="hidden" name="exam_name" value="<?php echo $Quiz_sub->name;?>" />
                         
-                        <button type="submit" class="button-start btn-block" <? echo $disabble;?>><i class="fa fa-power-off"></i><span class="ml5">Start now</span></button>
+                        <button type="submit" class="button-start btn-block" <?php echo $disabble;?>><i class="fa fa-power-off"></i><span class="ml5">Start now</span></button>
                         </form>
                         
                             <!--<a href="<?php echo SITE_URL;?>student/exam-hall.php" onclick="logStartTestEvent('<?php echo $Quiz_sub->subject_id;?>')" class="button-start btn-block"><i class="fa fa-power-off"></i><span class="ml5">Start now</span></a>-->
@@ -97,7 +97,7 @@ $query_sub = $db->query("SELECT quiz_subjectcombination.CatId, quiz_subjectcombi
                     </div>
                 </div>
              
-             <? }}?>
+             <?php }}?>
              
              
              

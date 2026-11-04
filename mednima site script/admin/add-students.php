@@ -285,7 +285,7 @@ foreach($class_list as $result)
               <label class="control-label">Sport House</label>
               <select name="sport_house" class="form-control"  id="Sport_House" required="required">
 <option value="">Select</option>
-<? foreach($Schoo_House_List as $Schoo_House){
+<?php foreach($Schoo_House_List as $Schoo_House){
 echo "<option value='$Schoo_House'>$Schoo_House</option>";
 }
 ?>

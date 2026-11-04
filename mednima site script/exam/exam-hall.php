@@ -36,7 +36,7 @@ if($_SESSION["SubId"] =="" || $_SESSION["CatId"] ==""){
 ?>
 
 
-<? $Quiz_sub_Details = $db->query("SELECT quiz_subjects.*, quiz_categories.name as cat_name from quiz_subjects join quiz_categories WHERE quiz_subjects.subject_id ='$sub_id' and quiz_categories.id ='$cat_id'  ");
+<?php $Quiz_sub_Details = $db->query("SELECT quiz_subjects.*, quiz_categories.name as cat_name from quiz_subjects join quiz_categories WHERE quiz_subjects.subject_id ='$sub_id' and quiz_categories.id ='$cat_id'  ");
 
 if($Quiz_sub_Details->num_rows < 1){
 	
@@ -89,10 +89,10 @@ $quiz_staus=1;
 									Exam Details
 								</span>
 								 <span class="info-boxx-text-btm subject-exam">
-								   <? echo $Quiz_sub_Detail->cat_name;?> (<? echo $Quiz_sub_Detail->subject_name;?>)								    									 
+								   <?php echo $Quiz_sub_Detail->cat_name;?> (<?php echo $Quiz_sub_Detail->subject_name;?>)								    									 
 								 </span>
                                  <span class="info-boxx-text-btm statex lemon">
-									 <span class="fs16"><span id="num_nav">1</span> / <? echo $question_limit;?></span>
+									 <span class="fs16"><span id="num_nav">1</span> / <?php echo $question_limit;?></span>
 								 </span>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@ $quiz_staus=1;
            <div class="row">
    <div class="col-md-10 col-md-offset-1" id="test-body">
            
- <?
+ <?php
  $limit_tag="<br>";
   $query = $db->query("SELECT * FROM quiz_questions WHERE sub_id='$sub_id' order by rand() limit $question_limit" );
   $pcount = $query->num_rows;
@@ -154,12 +154,12 @@ while($row = $query->fetch_object())
  
  ?>
  
-  <div class="main-exam disp_<? echo $pn;?>" <? echo $disp;?>>
-  <input type="hidden" id="ans_<? echo $row->id;?>" value="<? echo $row->Answer;?>">
+  <div class="main-exam disp_<?php echo $pn;?>" <?php echo $disp;?>>
+  <input type="hidden" id="ans_<?php echo $row->id;?>" value="<?php echo $row->Answer;?>">
 
                                     <div class="question-text"> 
                                     <div class="question-text text-justify">
-                                         <b><? echo $lt;?></b>.)   <? echo $qns;?>                                   
+                                         <b><?php echo $lt;?></b>.)   <?php echo $qns;?>                                   
                                         </div>
                                     </div>
                                     
@@ -168,7 +168,7 @@ while($row = $query->fetch_object())
                                      <div class="radio-holder">
 
                                                 <div class="col-md-1"> (A)</div>
-       <input type="radio" id="radio1" class="radio" name="options_<? echo $row->id;?>" value="A" onclick="chooseAns('A','<? echo $row->id;?>')"> <label for="radio1"><? echo $row->Option_A;?> <? echo $limit_tag;?></label>                                                    
+       <input type="radio" id="radio1" class="radio" name="options_<?php echo $row->id;?>" value="A" onclick="chooseAns('A','<?php echo $row->id;?>')"> <label for="radio1"><?php echo $row->Option_A;?> <?php echo $limit_tag;?></label>                                                    
                                                 </div>
                                                 
                                                 
@@ -176,27 +176,27 @@ while($row = $query->fetch_object())
                                                 <div class="radio-holder">
 
                                                 <div class="col-md-1"> (B)</div>
-       <input type="radio" id="radio2" class="radio" name="options_<? echo $row->id;?>" value="B" onclick="chooseAns('B','<? echo $row->id;?>')"> <label for="radio2"><? echo $row->Option_B;?> <? echo $limit_tag;?></label>                                                    
+       <input type="radio" id="radio2" class="radio" name="options_<?php echo $row->id;?>" value="B" onclick="chooseAns('B','<?php echo $row->id;?>')"> <label for="radio2"><?php echo $row->Option_B;?> <?php echo $limit_tag;?></label>                                                    
                                                 </div>
                                                 
                                                 <div class="radio-holder">
                                                 <div class="col-md-1"> (C)</div>
-       <input type="radio" id="radio3" class="radio" name="options_<? echo $row->id;?>" value="C" onclick="chooseAns('C','<? echo $row->id;?>')"> <label for="radio3"><? echo $row->Option_C;?> <? echo $limit_tag;?></label>                                                    
+       <input type="radio" id="radio3" class="radio" name="options_<?php echo $row->id;?>" value="C" onclick="chooseAns('C','<?php echo $row->id;?>')"> <label for="radio3"><?php echo $row->Option_C;?> <?php echo $limit_tag;?></label>                                                    
                                                 </div>  
  
- <? if($row->Option_D!=''){ ?>
+ <?php if($row->Option_D!=''){ ?>
  <div class="radio-holder">
  <div class="col-md-1"> (D)</div>
-       <input type="radio" id="radio4" class="radio" name="options_<? echo $row->id;?>" value="D" onclick="chooseAns('D','<? echo $row->id;?>')"> <label for="radio4"><? echo $row->Option_D;?> <? echo $limit_tag;?></label>                                                    
+       <input type="radio" id="radio4" class="radio" name="options_<?php echo $row->id;?>" value="D" onclick="chooseAns('D','<?php echo $row->id;?>')"> <label for="radio4"><?php echo $row->Option_D;?> <?php echo $limit_tag;?></label>                                                    
                                                 </div> 
-                                                <? }?>
+                                                <?php }?>
                                                 
- <? if($row->Option_E!=''){ ?>
+ <?php if($row->Option_E!=''){ ?>
  <div class="radio-holder">
  <div class="col-md-1"> (E)</div>
-       <input type="radio" id="radio5" class="radio" name="options_<? echo $row->id;?>" value="E" onclick="chooseAns('E','<? echo $row->id;?>')"> <label for="radio5"><? echo $row->Option_E;?> <? echo $limit_tag;?></label>                                                    
+       <input type="radio" id="radio5" class="radio" name="options_<?php echo $row->id;?>" value="E" onclick="chooseAns('E','<?php echo $row->id;?>')"> <label for="radio5"><?php echo $row->Option_E;?> <?php echo $limit_tag;?></label>                                                    
                                                 </div> 
-                                                <? }?>
+                                                <?php }?>
                                                 
                                                 </div>
                                         </div>
@@ -204,7 +204,7 @@ while($row = $query->fetch_object())
                                 
  
  
- <? 
+ <?php 
  if($lt%$limit==0)
 	    $pn++;
       $lt++;       
@@ -244,7 +244,7 @@ while($row = $query->fetch_object())
                                    
                                    
                                   
-                                       <? 
+                                       <?php 
 									   
 									   
 									   
@@ -254,8 +254,8 @@ while($row = $query->fetch_object())
 										   
                                        
                                            <div class="col-xs-1">
-                                           <button type="button" onclick="JumpTo('<? echo $i;?>')" class="btn btn-block btn-default btn-xs examnavbtn" value="<? echo $i;?>"  id="number_nav_id_<? echo $i;?>"><? echo $i;?></button></div> 
-                                           <? }?>
+                                           <button type="button" onclick="JumpTo('<?php echo $i;?>')" class="btn btn-block btn-default btn-xs examnavbtn" value="<?php echo $i;?>"  id="number_nav_id_<?php echo $i;?>"><?php echo $i;?></button></div> 
+                                           <?php }?>
                                            </div></div>
  
  
@@ -407,10 +407,10 @@ while($row = $query->fetch_object())
  
  function chooseAns(opt,ques_id)
  {
-	 var student_id = "<? echo $student_datail_list->StudentId;?>";
-	 var cat_id = "<? echo $cat_id;?>";
-	var sub_id = "<? echo $sub_id;?>";
-	var exam_id = "<? echo $exam_id;?>";
+	 var student_id = "<?php echo $student_datail_list->StudentId;?>";
+	 var cat_id = "<?php echo $cat_id;?>";
+	var sub_id = "<?php echo $sub_id;?>";
+	var exam_id = "<?php echo $exam_id;?>";
 	var score = 0;
 	var ans= $('#ans_'+ques_id).val();
      if (ans==opt) {
@@ -436,9 +436,9 @@ while($row = $query->fetch_object())
  function results()
  {
 	info = [];     
-	var exam_id = "<? echo $exam_id;?>";
-	var total_question = "<? echo $question_limit;?>";
-	var question_id = <? echo json_encode($CurrentQurrentIDs); ?>;  
+	var exam_id = "<?php echo $exam_id;?>";
+	var total_question = "<?php echo $question_limit;?>";
+	var question_id = <?php echo json_encode($CurrentQurrentIDs); ?>;  
 	$tcans=	cresult;
 	$twans=	wresult;
 	$examtime=$('#countdown').html();
@@ -452,7 +452,7 @@ while($row = $query->fetch_object())
 	   $.ajax({//Make the Ajax Request
                     type: "POST",
                     url: "update_quiz_ans.php",
-                    data:{view_result:"yes",examid:exam_id,tquestion:total_question,question_ids:question_id,subject:"<? echo $Quiz_sub_Detail->subject_name;?>"},
+                    data:{view_result:"yes",examid:exam_id,tquestion:total_question,question_ids:question_id,subject:"<?php echo $Quiz_sub_Detail->subject_name;?>"},
                     success: function(data){
 			
                        $('#error_msg').html(""); 

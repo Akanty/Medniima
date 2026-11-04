@@ -1,4 +1,4 @@
-<? 
+<?php 
 $filename = "../medniima_school.sql";
 define("SERVER", "localhost");
 	define("DB_USER", "root");

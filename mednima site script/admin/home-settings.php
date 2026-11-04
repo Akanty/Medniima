@@ -134,7 +134,7 @@ else if($error){?>
 
                                                 <form method="post">
                                                   
-                                                   <? 
+                                                   <?php 
 													   foreach($get_settings_List as $get_Setting_List_details){
 													   ?>
                                                    
@@ -154,7 +154,7 @@ else if($error){?>
                                                         
                                                     </div></div>
                                                     
-                                                    <? }?>
+                                                    <?php }?>
                                                     
                                  
              
@@ -229,7 +229,7 @@ foreach($sett_list as $sett_list_result)
     //$("#<?php echo $sett_list_result->configuration_key;?>").wysihtml5();
   });
 </script>
-	<? }}?> 
+	<?php }}?> 
 	
 
         <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->

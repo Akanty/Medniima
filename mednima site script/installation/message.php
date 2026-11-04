@@ -1,4 +1,4 @@
-<? $link = mysql_connect(SERVER, DB_USER, DB_PASS);
+<?php $link = mysql_connect(SERVER, DB_USER, DB_PASS);
 //$sql = $link->query("DROP DATABASE ".DB_NAME."");
 //$sqll = $link->query("CREATE DATABASE ".DB_NAME."");
 if($link){
@@ -22,4 +22,4 @@ To procede to the next step on installation, click Next.</p>
 </form>
 </div>
 </div>
-<? }else{ echo "cant Create $dbname"; };?>
+<?php }else{ echo "cant Create $dbname"; };?>

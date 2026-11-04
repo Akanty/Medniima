@@ -186,10 +186,10 @@ foreach($squery as $sresult)
 
 if($Question_query->sub_id == $sresult->subject_id){
 ?>
-<option value="<? echo $sresult->subject_id;?>" selected><?php echo htmlentities($sresult->subject_name); ?> &nbsp; - <?php echo htmlentities($sresult->subject_desc); ?></option>
-<? }else{?>
-<option value="<? echo $sresult->subject_id;?>"><?php echo htmlentities($sresult->subject_name); ?> &nbsp; - <?php echo htmlentities($sresult->subject_desc); ?></option>
-<? }}}?>
+<option value="<?php echo $sresult->subject_id;?>" selected><?php echo htmlentities($sresult->subject_name); ?> &nbsp; - <?php echo htmlentities($sresult->subject_desc); ?></option>
+<?php }else{?>
+<option value="<?php echo $sresult->subject_id;?>"><?php echo htmlentities($sresult->subject_name); ?> &nbsp; - <?php echo htmlentities($sresult->subject_desc); ?></option>
+<?php }}}?>
 
 
  
@@ -202,7 +202,7 @@ if($Question_query->sub_id == $sresult->subject_id){
                                                 
                                                     <div class="form-group has-success">
                                                         <label for="question" class="control-label">Question</label>
-                                                		<textarea cols="4" rows="4" name="question" id="question" class="form-control" required><? echo $Question_query->Question;?></textarea>
+                                                		<textarea cols="4" rows="4" name="question" id="question" class="form-control" required><?php echo $Question_query->Question;?></textarea>
                                                 			
                                                 		
                                                 	</div>
@@ -217,14 +217,14 @@ if($Question_query->sub_id == $sresult->subject_id){
                                                      <div class="form-group has-success">
                                                         <label for="success" class="control-label">Option A</label>
                                                         <div class="">
-                                                            <input type="text" name="optionA" value="<? echo $Question_query->Option_A;?>" class="form-control" required id="success">
+                                                            <input type="text" name="optionA" value="<?php echo $Question_query->Option_A;?>" class="form-control" required id="success">
                                                         </div>
                                                     </div>
                                                     
                                                     <div class="form-group has-success">
                                                         <label for="success" class="control-label">Option B</label>
                                                         <div class="">
-                                                            <input type="text" name="optionB" value="<? echo $Question_query->Option_B;?>" class="form-control" required id="success">
+                                                            <input type="text" name="optionB" value="<?php echo $Question_query->Option_B;?>" class="form-control" required id="success">
                                                         </div>
                                                     </div>
                                                     
@@ -232,21 +232,21 @@ if($Question_query->sub_id == $sresult->subject_id){
                                                     <div class="form-group has-success">
                                                         <label for="success" class="control-label">Option C</label>
                                                         <div class="">
-                                                            <input type="text" name="optionC" value="<? echo $Question_query->Option_C;?>" class="form-control" required id="success">
+                                                            <input type="text" name="optionC" value="<?php echo $Question_query->Option_C;?>" class="form-control" required id="success">
                                                         </div>
                                                     </div>
                                                     
                                                     <div class="form-group has-success">
                                                         <label for="success" class="control-label">Option D</label>
                                                         <div class="">
-                                                            <input type="text" name="optionD" value="<? echo $Question_query->Option_D;?>" class="form-control" required id="success">
+                                                            <input type="text" name="optionD" value="<?php echo $Question_query->Option_D;?>" class="form-control" required id="success">
                                                         </div>
                                                     </div>
                                                     
                                                     <div class="form-group has-success">
                                                         <label for="success" class="control-label">Option E</label>
                                                         <div class="">
-                                                            <input type="text" name="optionE" value="<? echo $Question_query->Option_E;?>" class="form-control" required id="success">
+                                                            <input type="text" name="optionE" value="<?php echo $Question_query->Option_E;?>" class="form-control" required id="success">
                                                         </div>
                                                     </div>
                                                     
@@ -256,15 +256,15 @@ if($Question_query->sub_id == $sresult->subject_id){
                                                         <label for="status" class="control-label">Answer</label>
                                                        
                                                     <select name="answer" class="form-control" id="answer"  required="required">
-<? 
+<?php 
 $Option_Answer = array("A","B","C","D","E");
 foreach($Option_Answer as $Option_Answer_t){
 if($Question_query->Answer == $Option_Answer_t){
 ?>
-<option value="<? echo $Option_Answer_t;?>" selected><? echo $Option_Answer_t;?></option>
-<? }else{?>
-<option value="<? echo $Option_Answer_t;?>"><? echo $Option_Answer_t;?></option>
-<? }}?>
+<option value="<?php echo $Option_Answer_t;?>" selected><?php echo $Option_Answer_t;?></option>
+<?php }else{?>
+<option value="<?php echo $Option_Answer_t;?>"><?php echo $Option_Answer_t;?></option>
+<?php }}?>
 
 </select>
                                                     

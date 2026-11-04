@@ -152,7 +152,7 @@ else if($error){?>
 
                                                 <form method="post">
                                                   
-                                                   <? if($get_fee_List){
+                                                   <?php if($get_fee_List){
 													   foreach($get_fee_List as $get_fee_List_details){
 													   ?>
                                                    
@@ -175,7 +175,7 @@ else if($error){?>
                                                         
                                                     </div></div>
                                                     
-                                                    <? }}?>
+                                                    <?php }}?>
                                                     
                                  <div class="row">                   
                                             <div class="input_fields_wrap"></div>        
@@ -184,7 +184,7 @@ else if($error){?>
                                                        
                                                     <select name="ClassName_id" class="form-control" id="classnamenumeric" required="required">
 
-<? if($feecid == 1) echo'<option value="1" selected>Nursery</option><option value="2">Primary</option><option value="3">Secondary</option>';elseif($feecid == 2)echo'<option value="1">Nursery</option><option value="2" selected>Primary</option><option value="3">Secondary</option>';else echo '<option value="1">Nursery</option><option value="2">Primary</option><option value="3" selected>Secondary</option>';?>
+<?php if($feecid == 1) echo'<option value="1" selected>Nursery</option><option value="2">Primary</option><option value="3">Secondary</option>';elseif($feecid == 2)echo'<option value="1">Nursery</option><option value="2" selected>Primary</option><option value="3">Secondary</option>';else echo '<option value="1">Nursery</option><option value="2">Primary</option><option value="3" selected>Secondary</option>';?>
 </select>
                                                     
      </div>

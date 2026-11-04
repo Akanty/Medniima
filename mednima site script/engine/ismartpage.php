@@ -31,7 +31,7 @@ echo'<script type="text/javascript">alert("An Error Occure Please Try Again Late
 
 include ("../controller/olami.php");
 ?><title><?php if(isset($title)){echo $title." : : ".SCHOOL_NAME;}else{echo SCHOOL_NAME." ". SCHOOL_DESC; }?></title>
-<?
+<?php
 include ("../pages/footer.html");
 
 ?>

@@ -36,7 +36,7 @@
         
          <div class="row">
         <div class="col-md-2">
-          <img src="<?php echo SITE_URL;?>images/<? echo SCHOOL_LOGO;?>" height="100" width="100"/>
+          <img src="<?php echo SITE_URL;?>images/<?php echo SCHOOL_LOGO;?>" height="100" width="100"/>
           </div>
           
            <div class="col-md-8">
@@ -44,7 +44,7 @@
            <br><small><?php echo SCHOOL_DESC;?></small><br>
            <small><?php echo SCHOOL_ADDRESS;?></small>
           </div>
-          <small class="pull-right">Date: <? echo date("d/m/Y");?></small>
+          <small class="pull-right">Date: <?php echo date("d/m/Y");?></small>
           </div>
           
         </h2>
@@ -73,7 +73,7 @@
     <div class="col-xs-4 invoice-col">
         <b>Payment Status</b><br>
         <b>Status:</b> <?php if($student_datail_list->fee_payment_status == 0) echo "Not Paid"; else echo "Paid";?><br>
-        <b>Section:</b> <? echo $d=date('Y')."/".($d=date('Y')+1);?>
+        <b>Section:</b> <?php echo $d=date('Y')."/".($d=date('Y')+1);?>
       </div><!-- /.col -->
     
       <div class="col-xs-2">
@@ -98,12 +98,12 @@
     <div class="row">
     
     <div class="col-xs-12">
-        <p class="lead">Registration Fee For <? echo $d=date('Y')."/".($d=date('Y')+1);?></p>
+        <p class="lead">Registration Fee For <?php echo $d=date('Y')."/".($d=date('Y')+1);?></p>
 
         <div class="table-responsive">
           <table class="table">
             
-            <?
+            <?php
         
  $conditions_check_fee["where"] = array("ClassName_id" => $student_datail_list->ClassNameNumeric);
 $check_fee_Row = $iSMartFUN->getTRows("tblfees",$conditions_check_fee);
@@ -114,15 +114,15 @@ foreach($check_fee_Row as $fee_result){
 ?>
             
             <tr>
-              <th style="width:50%"><? echo $fee_result->name;?>:</th>
-              <td>N<? echo number_format($total = $fee_result->amount);?></td>
+              <th style="width:50%"><?php echo $fee_result->name;?>:</th>
+              <td>N<?php echo number_format($total = $fee_result->amount);?></td>
             </tr>
-            <? $total_fee += $total;} ?>
+            <?php $total_fee += $total;} ?>
             <tr>
               <th>Total:</th>
-              <td>N <? echo number_format($total_fee);?></td>
+              <td>N <?php echo number_format($total_fee);?></td>
             </tr>
-           <? }else{
+           <?php }else{
            echo "<h1>No Payment Details Yet</h1>";
            }?>
             

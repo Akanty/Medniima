@@ -184,10 +184,10 @@ if($str=="1")
 ?>
 <option value="1" selected>Active</option>
 <option value="0">Block</option>
-<? }else{ ?>
+<?php }else{ ?>
 <option value="0" selected>Block</option>
 <option value="1">Active</option>
-<? }?>
+<?php }?>
 
 </select>
             </div>
@@ -229,10 +229,10 @@ if($gndr=="Male")
 ?>
 <option value="Male" selected>Male</option>
 <option value="Female">Female</option>
-<? }else{ ?>
+<?php }else{ ?>
 <option value="Female" selected>Female</option>
 <option value="Male">Male</option>
-<? }?>
+<?php }?>
 </select>
 
 </div>
@@ -305,7 +305,7 @@ if(in_array($subject_result->id, $teacher_SUbjecs)) {
 
 <option value="<?php echo htmlentities($subject_result->id); ?>" selected><?php echo htmlentities($subject_result->SubjectName); ?> </option>
 
-<? }else{?>
+<?php }else{?>
 
 <option value="<?php echo htmlentities($subject_result->id); ?>"><?php echo htmlentities($subject_result->SubjectName); ?> </option>
 <?php } }}?>
@@ -331,7 +331,7 @@ foreach($class_list as $result)
 { if($result->id == $teacher_results->classid){  ?>
 <option value="<?php echo htmlentities($result->id); ?>" selected><?php echo htmlentities($result->ClassName); ?>&nbsp; Section-<?php echo htmlentities($result->Section); ?></option>
 
-<? }else{?>
+<?php }else{?>
 
 <option value="<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->ClassName); ?>&nbsp; Section-<?php echo htmlentities($result->Section); ?></option>
 <?php }}} ?>

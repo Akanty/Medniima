@@ -235,6 +235,6 @@ else if($error){?>
         <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
     </body>
 </html>
-<? }}else{
+<?php }}else{
 	
 }?>

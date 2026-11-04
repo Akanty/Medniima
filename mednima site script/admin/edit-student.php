@@ -159,7 +159,7 @@ else if($error){?>
 <div class="form-group">
 <label for="default" class="control-label">First Name</label>
 
-<input type="text" placeholder="First Name" name="fname" value="<? echo htmlentities($student_name[0]);?>" class="form-control" id="fullanme" required>
+<input type="text" placeholder="First Name" name="fname" value="<?php echo htmlentities($student_name[0]);?>" class="form-control" id="fullanme" required>
 </div>
 </div>
 
@@ -168,7 +168,7 @@ else if($error){?>
 <div class="form-group">
 <label for="default" class="control-label">Middle Name</label>
 
-<input type="text" name="mname" placeholder="Middle Name" value="<? echo htmlentities($student_name[1]);?>" class="form-control" id="fullanme" required>
+<input type="text" name="mname" placeholder="Middle Name" value="<?php echo htmlentities($student_name[1]);?>" class="form-control" id="fullanme" required>
 </div>
 </div>
 
@@ -176,7 +176,7 @@ else if($error){?>
 <div class="form-group">
 <label for="default" class="control-label">Last Name</label>
 
-<input type="text" name="lname" class="form-control" value="<? echo htmlentities($student_name[2]);?>" placeholder="Last Name" id="fullanme" required>
+<input type="text" name="lname" class="form-control" value="<?php echo htmlentities($student_name[2]);?>" placeholder="Last Name" id="fullanme" required>
 </div>
 </div>
 
@@ -208,10 +208,10 @@ if($gndr=="Male")
 ?>
 <option value="Male" selected>Male</option>
 <option value="Female">Female</option>
-<? }else{ ?>
+<?php }else{ ?>
 <option value="Female" selected>Female</option>
 <option value="Male">Male</option>
-<? }?>
+<?php }?>
 
 </select>
 </div></div>
@@ -270,7 +270,7 @@ foreach($class_list as $result)
 
 <option value="<?php echo htmlentities($result->id); ?>" selected><?php echo htmlentities($result->ClassName); ?>&nbsp; Section-<?php echo htmlentities($result->Section); ?></option>
 
-<? }else{?>
+<?php }else{?>
 <option value="<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->ClassName); ?>&nbsp; Section-<?php echo htmlentities($result->Section); ?></option>
 <?php }}} ?>
  </select>
@@ -290,7 +290,7 @@ foreach($parent_list as $parent_list_result)
 {  
 if($parent_list_result->id == $student_results->parent_id){?>
 	<option value="<?php echo htmlentities($parent_list_result->id); ?>" selected><?php echo htmlentities($parent_list_result->fullname); ?></option>
-<? }else{?>
+<?php }else{?>
 <option value="<?php echo htmlentities($parent_list_result->id); ?>"><?php echo htmlentities($parent_list_result->fullname); ?></option>
 <?php }}} ?>
  </select>
@@ -306,10 +306,10 @@ if($str=="1")
 ?>
 <option value="1" selected>Active</option>
 <option value="0">Block</option>
-<? }else{ ?>
+<?php }else{ ?>
 <option value="0" selected>Block</option>
 <option value="1">Active</option>
-<? }?>
+<?php }?>
 
 </select>
             </div>
@@ -467,7 +467,7 @@ $('#datetimepicker2').datetimepicker({
         
     </body>
 </html>
-<?PHP }else{
+<?php }else{
 	echo "student not found";
 	
 }}?>

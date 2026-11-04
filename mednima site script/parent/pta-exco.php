@@ -70,7 +70,7 @@ include("design/nav.html");
                 
                     <tbody>
                     
-                    <? $ptaquery = $db->query("select tblparent.*, tblpta_excos.post from tblparent join tblpta_excos on tblpta_excos.parent_id = tblparent.id where tblparent.pta_exco ='1'");
+                    <?php $ptaquery = $db->query("select tblparent.*, tblpta_excos.post from tblparent join tblpta_excos on tblpta_excos.parent_id = tblparent.id where tblparent.pta_exco ='1'");
 					
 					$cnt=1;
 if($ptaquery->num_rows > 0)

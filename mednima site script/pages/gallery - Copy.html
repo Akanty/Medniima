@@ -53,7 +53,7 @@ div.desc {
 		<div class="container">
 			<h1 class="single">Photo Gallery</h1>
 <div class="main-content">
-<? if($photo_List){
+<?php if($photo_List){
 foreach($photo_List as $photo_List_row){?>
 
                 <div class="responsive">
@@ -64,7 +64,7 @@ foreach($photo_List as $photo_List_row){?>
 
 </div>
 </div>
-<? }}else{
+<?php }}else{
 echo "<div style='text-align:center; color:red'><h3>No Photo In Gallery Yet</h3></div>";
 }?>
 

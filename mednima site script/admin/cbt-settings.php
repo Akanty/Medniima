@@ -153,10 +153,10 @@ else if($error){?>
 for($i=1;$i<=10;$i++){
 if(QUESTION_PER_PAGE == $i){
 ?>
-<option value="<? echo $i;?>" selected><?php echo $i; ?></option>
-<? }else{?>
-<option value="<? echo $i;?>"><?php echo $i; ?></option>
-<? }}?>
+<option value="<?php echo $i;?>" selected><?php echo $i; ?></option>
+<?php }else{?>
+<option value="<?php echo $i;?>"><?php echo $i; ?></option>
+<?php }}?>
 
  </select>
                                                     
@@ -166,7 +166,7 @@ if(QUESTION_PER_PAGE == $i){
                                                         <label for="examtime" class="control-label">Default Exam Time Duration</label>
                                                        
                                                     <select name="examtime" class="form-control" id="examtime"  required="required">
-<? 
+<?php 
 
 
 $time_List = array("00:00:60","00:05:00","00:10:00","00:15:00","00:20:00","00:30:00","00:45:00","00:50:00","01:00:00","01:15:00","01:45:00","02:00:00","02:15:00","02:30:00","02:45:00","03:00:00","03:30:00","04:00:00");
@@ -174,10 +174,10 @@ foreach($time_List as $Option_t){
 if(EXAM_TIME == $Option_t){
 	
 ?>
-<option value="<? echo $Option_t;?>" selected><? echo $iSMartFUN->minutes($Option_t);?></option>
-<? }else{?>
-<option value="<? echo $Option_t;?>"><? echo $iSMartFUN->minutes($Option_t);?></option>
-<? }}?>
+<option value="<?php echo $Option_t;?>" selected><?php echo $iSMartFUN->minutes($Option_t);?></option>
+<?php }else{?>
+<option value="<?php echo $Option_t;?>"><?php echo $iSMartFUN->minutes($Option_t);?></option>
+<?php }}?>
 
 </select>
                                                     

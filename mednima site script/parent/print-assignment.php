@@ -51,7 +51,7 @@ $assignment_view_result = $query->fetch_object();
         
          <div class="row">
         <div class="col-md-2">
-          <img src="<?php echo SITE_URL;?>images/<? echo SCHOOL_LOGO;?>" height="100" width="100"/>
+          <img src="<?php echo SITE_URL;?>images/<?php echo SCHOOL_LOGO;?>" height="100" width="100"/>
           </div>
           
            <div class="col-md-8">
@@ -59,7 +59,7 @@ $assignment_view_result = $query->fetch_object();
            <br><small><?php echo SCHOOL_DESC;?></small><br>
            <small><?php echo SCHOOL_ADDRESS;?></small>
           </div>
-          <small class="pull-right">Date: <? echo date("d/m/Y");?></small>
+          <small class="pull-right">Date: <?php echo date("d/m/Y");?></small>
           </div>
           
         </h2>
@@ -103,6 +103,6 @@ $assignment_view_result = $query->fetch_object();
 </body>
 </html>
 
-<? }}else{
+<?php }}else{
 	
 }?>

@@ -1,4 +1,4 @@
-<? 
+<?php 
 $link = mysql_connect("localhost", "root", "");
 
 define("SERVER", "localhost");

@@ -425,7 +425,7 @@ include ("header.html");
 						</div>
 				</li>
 				
-<? }}?>
+<?php }}?>
 			</ul>
             <div class="bg-bottom"></div>
             </div>
@@ -457,7 +457,7 @@ include ("header.html");
 				<!-- / content 
 			</li>
 
-<? }}?>
+<?php }}?>
         
 		
 		</ul>
@@ -474,7 +474,7 @@ include ("header.html");
 				<div class="pic"><img width="121" src="<?php echo SITE_URL;?>images/logo.png" alt=""></div>
 				<div class="info">
 					<h3>Welcome</h3>
-					<p><? echo HOME_GREETING;?>
+					<p><?php echo HOME_GREETING;?>
                     </p>
 				</div>
 			</article>
@@ -485,7 +485,7 @@ include ("header.html");
 				<div class="pic"><img width="121" src="<?php echo SITE_URL;?>images/3.png" alt=""></div>
 				<div class="info">
 					<h3>Our Academic Curriculum</h3>
-					<p><? echo $iSMartFUN->shorttext(ACADEMIC_CURRICULUM,"pages-academic-curriculum");?></p>
+					<p><?php echo $iSMartFUN->shorttext(ACADEMIC_CURRICULUM,"pages-academic-curriculum");?></p>
 				</div>
 			</article>
             
@@ -500,9 +500,9 @@ include ("header.html");
             <article>
 				<div class="pic"><img width="121" src="<?php echo SITE_URL;?>images/2.png" alt=""></div>
 				<div class="info">
-					<h3>Admission into <? echo SCHOOL_NAME;?></h3>
+					<h3>Admission into <?php echo SCHOOL_NAME;?></h3>
 					<p>
-                    <? echo $iSMartFUN->shorttext(ADMISSION_IN_BRIEF,"pages-admission-details");?>
+                    <?php echo $iSMartFUN->shorttext(ADMISSION_IN_BRIEF,"pages-admission-details");?>
                      </p>
 				</div>
 			</article>
@@ -513,7 +513,7 @@ include ("header.html");
 				<div class="info">
 					<h3>Awesome results of our students</h3>
 					<p>
-                     <? echo $iSMartFUN->shorttext(STUDENT_RESULT_IN_BRIEF,"pages-our-students-result");?>
+                     <?php echo $iSMartFUN->shorttext(STUDENT_RESULT_IN_BRIEF,"pages-our-students-result");?>
                     </p>
 				</div>
 			</article>
@@ -547,12 +547,12 @@ include ("header.html");
 					<a class="more" href="<?php echo SITE_URL;?>news-details-<?php echo $news_List_row->id;?>">Read more</a>
 				</div>
 			</article>
-            <?}?>
+            <?php}?>
             <div class="btn-holder">
 				<a class="btn" href="<?php echo SITE_URL;?>news">See archival news</a>
 			</div>
             
-            <? }else{
+            <?php }else{
             echo "<div style='text-align:center'><h3>No News Yet</h3></div>";}?>
             
 			
@@ -565,7 +565,7 @@ include ("header.html");
 		<div class="container">
 			<h2>Upcoming events</h2>
             
-            <? if($event_List){
+            <?php if($event_List){
             foreach($event_List as $event_List_row){ ?>
             
 			<article>
@@ -579,12 +579,12 @@ include ("header.html");
 					<a class="more" href="<?php echo SITE_URL;?>event-details-<?php echo $event_List_row->id;?>">Read more</a>
 				</div>
 			</article>
-            <? }?>
+            <?php }?>
             
 			<div class="btn-holder">
 				<a class="btn blue" href="<?php echo SITE_URL;?>events">See all upcoming events</a>
 			</div>
-            <? }else{
+            <?php }else{
             echo "<div style='text-align:center'><h3>No Upcoming Event For Now</h3></div>";
             }?>
             

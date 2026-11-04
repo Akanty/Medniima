@@ -284,6 +284,6 @@ foreach($class_list as $result)
         <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
     </body>
 </html>
-<? }}else{
+<?php }}else{
 	
 }?>

@@ -75,7 +75,7 @@ if(!empty($_POST["classid1"]))
 ?>
 
 
-<?
+<?php
 // Code for Class Subjects
 if(!empty($_POST["getclassSubject"])) 
 {
@@ -110,7 +110,7 @@ $cnt++; }
 
 
 
-<?
+<?php
 // Code for CBT Subjects
 if(!empty($_POST["getCBTSubject"])) 
 {

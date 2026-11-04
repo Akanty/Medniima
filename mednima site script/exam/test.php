@@ -49,7 +49,7 @@ $query = $db->query("SELECT quiz_categories.*,quiz_subjects.subject_name,quiz_su
         
            <div class="row">
             
-            <? if($query->num_rows > 0)
+            <?php if($query->num_rows > 0)
 {
 	while($Quiz_cat = $query->fetch_object()){
 	$attempt_Count_ = $db->query("SELECT COUNT(DISTINCT exam_id) as total_attempt FROM quiz_result where cat_id='$Quiz_cat->id'");
@@ -62,7 +62,7 @@ $query = $db->query("SELECT quiz_categories.*,quiz_subjects.subject_name,quiz_su
                     <h3><?php echo $Quiz_cat->name;?></h3>
                     <p><?php echo $Quiz_cat->fullname;?></p>
                     <hr>                           
-                    <img class="img-responsive" src="<? echo SITE_URL;?>exam/images/<?php echo $Quiz_cat->img;?>" alt="">
+                    <img class="img-responsive" src="<?php echo SITE_URL;?>exam/images/<?php echo $Quiz_cat->img;?>" alt="">
                 </div>
 
                 <table class="table table-responsive">
@@ -97,7 +97,7 @@ $query = $db->query("SELECT quiz_categories.*,quiz_subjects.subject_name,quiz_su
             </div>
         </div>
              
-             <? }}?>
+             <?php }}?>
              
              
              

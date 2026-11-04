@@ -27,7 +27,7 @@
             foreach($news_List as $news_List_row){?>
 						<li><a href="<?php echo SITE_URL;?>news-details-<?php echo $news_List_row->id;?>"><?php echo $news_List_row->title;?></a></li>
 						
-                        <? }}else{
+                        <?php }}else{
             echo "<div style='text-align:center'><h3>No News Yet</h3></div>";}?>
 					</ul>
 				</article>
@@ -81,11 +81,11 @@
 					<input type="submit" value="">
 				</form>
 				<ul class="w3l_footer_nav">
-					<li><a href="<? echo SITE_URL;?>">Home</a></li>
-					<li><a href="<? echo SITE_URL;?>p-about">About</a></li>
-					<li><a href="<? echo SITE_URL;?>gallery">Gallery</a></li>
-					<li><a href="<? echo SITE_URL;?>news">News</a></li>
-					<li><a href="<? echo SITE_URL;?>events">Events</a></li>
+					<li><a href="<?php echo SITE_URL;?>">Home</a></li>
+					<li><a href="<?php echo SITE_URL;?>p-about">About</a></li>
+					<li><a href="<?php echo SITE_URL;?>gallery">Gallery</a></li>
+					<li><a href="<?php echo SITE_URL;?>news">News</a></li>
+					<li><a href="<?php echo SITE_URL;?>events">Events</a></li>
 				</ul>
 				<p>&copy; 2027 Medni'ima International School. All Rights Reserved | Design by Zainab Aliyu Adamu</p>
 			</div>
