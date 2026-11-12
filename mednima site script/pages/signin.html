@@ -1,74 +1,373 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>Login :: <?php echo SCHOOL_NAME;?></title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="<?php echo SITE_URL;?>res/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<link href="<?php echo SITE_URL;?>res/css/style.css" rel='stylesheet' type='text/css' />
-<link href="<?php echo SITE_URL;?>res/css/font-awesome.css" rel="stylesheet"> 
-<script src="<?php echo SITE_URL;?>res/js/jquery.min.js"> </script>
-<script src="<?php echo SITE_URL;?>res/js/bootstrap.min.js"> </script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#123c52">
+	<title>Sign in | <?php echo htmlspecialchars(SCHOOL_NAME, ENT_QUOTES, 'UTF-8');?></title>
+	<style>
+		:root {
+			color-scheme: light;
+			font-family: Inter, "Segoe UI", Arial, sans-serif;
+			color: #183343;
+			background: #f2f6f7;
+			font-synthesis: none;
+			text-rendering: optimizeLegibility;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			min-width: 320px;
+			min-height: 100vh;
+			margin: 0;
+			display: grid;
+			place-items: center;
+			padding: 40px 24px;
+			background:
+				radial-gradient(ellipse at 12% 10%, rgba(35, 155, 150, .09), transparent 34rem),
+				#f2f6f7;
+		}
+
+		.login-shell {
+			display: grid;
+			grid-template-columns: minmax(280px, .92fr) minmax(360px, 1.08fr);
+			width: min(100%, 960px);
+			min-height: 570px;
+			overflow: hidden;
+			border: 1px solid #e3eaed;
+			border-radius: 24px;
+			background: #fff;
+			box-shadow: 0 24px 70px rgba(21, 54, 70, .12);
+		}
+
+		.brand-panel {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			overflow: hidden;
+			padding: 48px 42px 38px;
+			color: #fff;
+			background: linear-gradient(145deg, #123c52 0%, #145b67 58%, #17817c 100%);
+		}
+
+		.brand-panel::before,
+		.brand-panel::after {
+			position: absolute;
+			border: 1px solid rgba(255, 255, 255, .13);
+			border-radius: 50%;
+			content: "";
+			pointer-events: none;
+		}
+
+		.brand-panel::before {
+			right: -150px;
+			bottom: 45px;
+			width: 340px;
+			height: 340px;
+		}
+
+		.brand-panel::after {
+			right: -90px;
+			bottom: 105px;
+			width: 220px;
+			height: 220px;
+		}
+
+		.brand,
+		.brand-message,
+		.brand-footer {
+			position: relative;
+			z-index: 1;
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.brand img {
+			display: block;
+			width: 64px;
+			height: 64px;
+			object-fit: contain;
+			border-radius: 14px;
+			background: #fff;
+		}
+
+		.brand-name {
+			font-size: 15px;
+			font-weight: 700;
+			line-height: 1.4;
+			letter-spacing: .01em;
+		}
+
+		.brand-message {
+			margin: 72px 0;
+		}
+
+		.eyebrow {
+			margin: 0 0 18px;
+			color: #b6e4df;
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: .16em;
+			text-transform: uppercase;
+		}
+
+		.brand-message h1 {
+			max-width: 360px;
+			margin: 0;
+			font-size: clamp(32px, 4vw, 43px);
+			font-weight: 650;
+			line-height: 1.12;
+			letter-spacing: -.04em;
+		}
+
+		.brand-message p:last-child {
+			max-width: 340px;
+			margin: 20px 0 0;
+			color: rgba(255, 255, 255, .78);
+			font-size: 15px;
+			line-height: 1.7;
+		}
+
+		.brand-footer {
+			color: rgba(255, 255, 255, .68);
+			font-size: 12px;
+			line-height: 1.5;
+		}
+
+		.form-panel {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 56px clamp(32px, 6vw, 72px);
+		}
+
+		.form-content {
+			width: 100%;
+			max-width: 360px;
+		}
+
+		.form-content h2 {
+			margin: 0;
+			color: #183343;
+			font-size: 30px;
+			font-weight: 700;
+			letter-spacing: -.035em;
+		}
+
+		.form-intro {
+			margin: 10px 0 32px;
+			color: #647782;
+			font-size: 15px;
+			line-height: 1.6;
+		}
+
+		.alert {
+			margin: 0 0 22px;
+			padding: 13px 15px;
+			border: 1px solid #f0c6c2;
+			border-radius: 10px;
+			color: #8d2923;
+			background: #fff5f4;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+
+		.field {
+			margin-bottom: 20px;
+		}
+
+		.field label {
+			display: block;
+			margin-bottom: 8px;
+			color: #263f4c;
+			font-size: 13px;
+			font-weight: 650;
+		}
+
+		.field input {
+			display: block;
+			width: 100%;
+			min-height: 52px;
+			padding: 0 15px;
+			border: 1px solid #ccd8dc;
+			border-radius: 10px;
+			outline: none;
+			color: #183343;
+			background: #fff;
+			font: inherit;
+			font-size: 15px;
+			transition: border-color .16s ease, box-shadow .16s ease;
+		}
+
+		.field input::placeholder {
+			color: #87979e;
+		}
+
+		.field input:hover {
+			border-color: #9db1b8;
+		}
+
+		.field input:focus {
+			border-color: #187b78;
+			box-shadow: 0 0 0 4px rgba(24, 123, 120, .15);
+		}
+
+		.submit-button {
+			width: 100%;
+			min-height: 52px;
+			margin-top: 6px;
+			border: 0;
+			border-radius: 10px;
+			color: #fff;
+			background: #176f70;
+			font: inherit;
+			font-size: 15px;
+			font-weight: 700;
+			cursor: pointer;
+			transition: background-color .16s ease, transform .16s ease, box-shadow .16s ease;
+		}
+
+		.submit-button:hover {
+			background: #125c60;
+			box-shadow: 0 8px 18px rgba(18, 92, 96, .18);
+		}
+
+		.submit-button:active {
+			transform: translateY(1px);
+		}
+
+		.submit-button:focus-visible,
+		.brand:focus-visible {
+			outline: 3px solid #82d8cc;
+			outline-offset: 4px;
+		}
+
+		.form-note {
+			margin: 22px 0 0;
+			color: #71818a;
+			font-size: 12px;
+			line-height: 1.6;
+			text-align: center;
+		}
+
+		@media (max-width: 700px) {
+			body {
+				padding: 20px 14px;
+			}
+
+			.login-shell {
+				grid-template-columns: 1fr;
+				width: min(100%, 460px);
+				min-height: 0;
+				border-radius: 20px;
+			}
+
+			.brand-panel {
+				min-height: 205px;
+				padding: 24px 26px;
+			}
+
+			.brand img {
+				width: 52px;
+				height: 52px;
+			}
+
+			.brand-message {
+				margin: 28px 0 0;
+			}
+
+			.brand-message .eyebrow,
+			.brand-message p:last-child,
+			.brand-footer {
+				display: none;
+			}
+
+			.brand-message h1 {
+				max-width: none;
+				font-size: 24px;
+				letter-spacing: -.025em;
+			}
+
+			.form-panel {
+				padding: 34px 26px 38px;
+			}
+
+			.form-content h2 {
+				font-size: 26px;
+			}
+
+			.form-intro {
+				margin-bottom: 26px;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*,
+			*::before,
+			*::after {
+				scroll-behavior: auto !important;
+				transition-duration: .01ms !important;
+			}
+		}
+	</style>
 </head>
 <body>
-	<div class="login">
-		<h1><a href="<?php echo SITE_URL;?>"><?php echo SCHOOL_NAME;?> </a></h1>
-		<div class="login-bottom">
-			<h2>Login</h2>
-             <?php if(isset($ErrorMsg)){echo "<div class='alert alert-danger'>
-					<span class='glyphicon glyphicon-info-sign'></span> &nbsp;".$ErrorMsg."</div>";}?>
-			<form action="" method="post">
-            <input type="hidden" value="login" name="action">
-			<div class="col-md-6">
-				<div class="login-mail">
-					<input type="text" name="username" placeholder="Username" required>
-					<i class="fa fa-user"></i>
-				</div>
-				<div class="login-mail">
-					<input name="password" type="password" placeholder="Password" required>
-					<i class="fa fa-lock"></i>
-				</div>
-				   <a class="news-letter " href="#">
-						 <label class="checkbox1"><input type="checkbox" name="checkbox" ><i> </i>Forget Password</label>
-					   </a>
+	<main class="login-shell">
+		<section class="brand-panel" aria-label="School information">
+			<a class="brand" href="<?php echo htmlspecialchars(SITE_URL, ENT_QUOTES, 'UTF-8');?>" aria-label="<?php echo htmlspecialchars(SCHOOL_NAME, ENT_QUOTES, 'UTF-8');?> home">
+				<img src="<?php echo htmlspecialchars(SITE_URL . 'images/' . SCHOOL_LOGO, ENT_QUOTES, 'UTF-8');?>" alt="">
+				<span class="brand-name"><?php echo htmlspecialchars(SCHOOL_NAME, ENT_QUOTES, 'UTF-8');?></span>
+			</a>
 
-			
+			<div class="brand-message">
+				<p class="eyebrow">School portal</p>
+				<h1>Your school, all in one place.</h1>
+				<p><?php echo htmlspecialchars(SCHOOL_DESC, ENT_QUOTES, 'UTF-8');?></p>
 			</div>
-			<div class="col-md-6 login-do">
-				<label class="hvr-shutter-in-horizontal login-sub">
-					<input type="submit" value="login">
-					</label>
-					
-                
-                <div class="form-group2 group-mail">
-              <label class="control-label">Choose account Type</label>
-            <select name="accnt_type">
-            	<option value="0">Student</option>
-            	<option value="1">Teacher</option>
-                <option value="2">Parent</option>
-            	<option value="3">Director</option>
-         
-            </select>
-            </div>
-            
-            
+
+			<div class="brand-footer">A connected school community</div>
+		</section>
+
+		<section class="form-panel" aria-labelledby="login-title">
+			<div class="form-content">
+				<h2 id="login-title">Welcome back</h2>
+				<p class="form-intro">Sign in with your school account to continue.</p>
+
+				<?php if(isset($ErrorMsg)){?>
+					<div class="alert" role="alert"><?php echo htmlspecialchars($ErrorMsg, ENT_QUOTES, 'UTF-8');?></div>
+				<?php }?>
+
+				<form action="" method="post">
+					<input type="hidden" name="action" value="login">
+
+					<div class="field">
+						<label for="username">Username</label>
+						<input id="username" type="text" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Enter your username" required>
+					</div>
+
+					<div class="field">
+						<label for="password">Password</label>
+						<input id="password" type="password" name="password" autocomplete="current-password" placeholder="Enter your password" required>
+					</div>
+
+					<button class="submit-button" type="submit">Sign in</button>
+				</form>
+
+				<p class="form-note">Use the username and password provided by your school.</p>
 			</div>
-			
-			<div class="clearfix"> </div>
-			</form>
-		</div>
-	</div>
-		<!---->
-<div class="copy-right">
-            <p>&copy; 2027 Medni'ima International School. All Rights Reserved | Design by Zainab Aliyu Adamu</p>	    </div>  
-<!---->
-<!--scrolling js-->
-	<script src="<?php echo SITE_URL;?>resjs/jquery.nicescroll.js"></script>
-	<script src="<?php echo SITE_URL;?>resjs/scripts.js"></script>
-	<!--//scrolling js-->
+		</section>
+	</main>
 </body>
 </html>
-

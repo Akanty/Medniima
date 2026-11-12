@@ -1,4 +1,7 @@
 <?php
+$msg = '';
+$error = '';
+
 include '../controller/header.php';
 include 'engine/tophead.php';
 $title = "Manage Students Results";

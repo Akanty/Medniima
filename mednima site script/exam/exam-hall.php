@@ -140,7 +140,7 @@ while($row = $query->fetch_object())
 		   array_push($CurrentQurrentIDs,$row->id);
 		   $ques_iddd[] = $row->id;
 			$qns = $row->Question;
-			  $ans = $row-Answer;
+			$ans = $row->Answer;
 			$opt1 = $row->Option_A;
 			$opt2 = $row->Option_B;
 			$opt3 = $row->Option_C;

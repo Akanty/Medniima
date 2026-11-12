@@ -1,77 +1,64 @@
 <?php
 include ("../controller/header.php");
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
-$action = $db->real_escape_string(strip_tags($_POST['action']));
-if(isset($_POST["action"]) && !empty($_POST["action"])) 
-		{
-			$date = date("d-m-Y H:i:s");
-			$last_ip=$_SERVER["REMOTE_ADDR"];
-			$last_browser=$_SERVER["HTTP_USER_AGENT"];
-			
-			if($_POST["action"] == "login") 
-			{
-				
-				
-			$username = $db->real_escape_string(strip_tags($_POST['username']));
- 			$password = $db->real_escape_string(strip_tags($_POST['password']));
-			$accnt_type = $db->real_escape_string(strip_tags($_POST['accnt_type']));
-			
-			switch($accnt_type){
-			case 0: 
-			$table = "tblstudents";
-			$get_condition['where'] = array('password' => md5($password), 'RollId' => $username);
-			$id = "StudentId";
-			$home = "student";
-			$session = "slogin";
-			break;
-			case 1:	
-			$table = "tblteacher";
-			$get_condition['where'] = array('password' => md5($password), 'username' => $username);
-			
-			$id = "id";
-			$home = "staff";
-			$session = "tlogin"; 
-			break;
-			case 2:	
-			$table = "tblparent";
-			$id = "id";
-			$session = "plogin";
-			$home = "parent";
-			$get_condition['where'] = array('password' => md5($password), 'username' => $username);
-			break;
-			case 3:	
-			$table = "admin";
-			$get_condition['where'] = array('UserName' => $username, 'Password' => md5($password));
-			
-			$id = "id";
-			$home = "admin"; 
-			$session = "alogin";
-					break;
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'login') {
+	$username = $_POST['username'] ?? '';
+	$password = $_POST['password'] ?? '';
+
+	if (!is_string($username) || !is_string($password) || trim($username) === '' || $password === '') {
+		$ErrorMsg = 'Invalid Login Details!';
+	} else {
+		$username = trim($username);
+		$passwordHash = md5($password);
+		$accounts = array(
+			array('table' => 'tblstudents', 'username' => 'RollId', 'password' => 'password', 'id' => 'StudentId', 'session' => 'slogin', 'home' => 'student'),
+			array('table' => 'tblteacher', 'username' => 'username', 'password' => 'password', 'id' => 'id', 'session' => 'tlogin', 'home' => 'staff'),
+			array('table' => 'tblparent', 'username' => 'username', 'password' => 'password', 'id' => 'id', 'session' => 'plogin', 'home' => 'parent'),
+			array('table' => 'admin', 'username' => 'UserName', 'password' => 'Password', 'id' => 'id', 'session' => 'alogin', 'home' => 'admin')
+		);
+		$matches = array();
+		$queryFailed = false;
+
+		foreach ($accounts as $account) {
+			$sql = 'SELECT ' . $account['id'] . ' FROM ' . $account['table']
+				. ' WHERE ' . $account['username'] . ' = ? AND ' . $account['password'] . ' = ? LIMIT 2';
+			$statement = $db->prepare($sql);
+			if (!$statement || !$statement->bind_param('ss', $username, $passwordHash) || !$statement->execute() || !$statement->store_result()) {
+				error_log('Unable to verify login credentials: ' . $db->error);
+				if ($statement) {
+					$statement->close();
+				}
+				$queryFailed = true;
+				break;
 			}
-			$get_condition['return_type'] = 'single';
-			$login_query = $iSMartFUN->getTRows($table,$get_condition);
-			
-		if(!$login_query){
-			$ErrorMsg =  "Invalid Login Details!";
-		}else{
-		
-			$_SESSION[$session] = $login_query->$id;
-		//$db->query("UPDATE $type last_login ='$date' WHERE $id='".$id."'");
-		
-		$url = '/' . $home . '/';
-        header("Location: $url");
-        exit();
-			
-			
+
+			$matchCount = $statement->num_rows;
+			if ($matchCount === 1) {
+				$statement->bind_result($accountId);
+				$statement->fetch();
+				$account['account_id'] = $accountId;
+				$matches[] = $account;
+			} elseif ($matchCount > 1) {
+				$matches[] = $account;
+				$matches[] = $account;
+			}
+			$statement->close();
 		}
-			
-			
-			}//end of login action
 
-
+		if ($queryFailed) {
+			$ErrorMsg = 'Unable to process your login right now. Please try again later.';
+		} elseif (count($matches) === 1) {
+			session_regenerate_id(true);
+			unset($_SESSION['slogin'], $_SESSION['tlogin'], $_SESSION['plogin'], $_SESSION['alogin']);
+			$_SESSION[$matches[0]['session']] = $matches[0]['account_id'];
+			header('Location: /' . $matches[0]['home'] . '/');
+			exit();
+		} elseif (count($matches) > 1) {
+			$ErrorMsg = 'These login details match more than one account. Please contact the school administrator.';
+		} else {
+			$ErrorMsg = 'Invalid Login Details!';
+		}
 	}
-	
 }
 
 include ("../pages/signin.html");

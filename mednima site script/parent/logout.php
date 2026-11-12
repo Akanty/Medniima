@@ -11,7 +11,6 @@ if (ini_get("session.use_cookies")) {
 unset($_SESSION['slogin']);
 session_destroy(); // destroy session
 require_once __DIR__ . '/../controller/site-url.php';
-ob_end_clean(); // Delete the buffer.
         $url=SITE_URL.'login';
         header("Location: $url");
         exit();

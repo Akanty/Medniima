@@ -6,6 +6,9 @@ $title = "Create Assignment";
 include("design/header.html");
 include("design/nav.html");
 
+$msg = '';
+$error = '';
+
 if(isset($_POST['submit']))
 {
 

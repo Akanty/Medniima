@@ -20,7 +20,7 @@ ob_end_clean(); // Delete the buffer.
         exit();	
 }else{
 $userid = $_SESSION['slogin'];
-$sql = "SELECT tblstudents.*,tblparent.fullname,tblparent.phone,tblparent.address as paddress,tblparent.state as pstate,tblclasses.* from tblstudents  join tblclasses on tblclasses.id=tblstudents.ClassId join tblparent on tblparent.id = tblstudents.parent_id where tblstudents.StudentId ='".$_SESSION['slogin']."' ";
+$sql = "SELECT tblstudents.*,tblparent.title as parent_title,tblparent.fullname,tblparent.phone,tblparent.address as paddress,tblparent.state as pstate,tblclasses.* from tblstudents  join tblclasses on tblclasses.id=tblstudents.ClassId join tblparent on tblparent.id = tblstudents.parent_id where tblstudents.StudentId ='".$_SESSION['slogin']."' ";
 $query = $db->query($sql);
 $student_datail_list = $query->fetch_object();
 

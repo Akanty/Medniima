@@ -109,6 +109,7 @@
 $check_fee_Row = $iSMartFUN->getTRows("tblfees",$conditions_check_fee);
 if($check_fee_Row){
 
+ $total_fee = 0;
 
 foreach($check_fee_Row as $fee_result){
 ?>

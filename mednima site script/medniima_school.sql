@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
-(1, 'admin', 'c82138c7e01ad922b0a58fdd33c3a91c', '2017-10-11 16:22:10');
+(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '2017-10-11 16:22:10');
 
 -- --------------------------------------------------------
 
@@ -1638,9 +1638,9 @@ CREATE TABLE IF NOT EXISTS `tblstudents` (
 --
 
 INSERT INTO `tblstudents` (`StudentId`, `StudentName`, `RollId`, `password`, `StudentEmail`, `Gender`, `photo`, `DOB`, `ClassId`, `parent_id`, `address`, `state`, `LGA`, `town`, `sport_house`, `fee_payment_status`, `F_school_name`, `F_school_address`, `F_school_date`, `RegDate`, `UpdationDate`, `Status`) VALUES
-(1, 'adana ibrahim ololade', 'MIS/STU/89124', '827ccb0eea8a706c4c34a16891f84e7b', 'o89124@mis.com', 'Male', '89124.png', '2017/10/20', 7, 1, 'adrghjkl', 'kwara', 'irepodun', 'ajase', '', '0', 'wertyui', 'uewrty', '2017-10-20', '2017-10-21 01:29:57', '2017-10-22 06:32:00', 1),
-(2, 'abdul yekeen olamide', 'MIS/STU/77254', '827ccb0eea8a706c4c34a16891f84e7b', 'o77254@mis.com', 'Male', '77254.jpg', '2014/02/04', 1, 1, 'drtfghjuk', 'kwara', 'irepodun', 'ajase', '', '0', 'my former school noni', 'sdfghj', '2017-05-22', '2017-10-21 03:09:05', '2017-10-22 06:32:05', 1),
-(3, 'Sanusi Tajudeen Akinwumi', 'MIS/STU/54106', '827ccb0eea8a706c4c34a16891f84e7b', 'a54106@mis.com', 'Male', '54106.JPG', '2015/08/06', 8, 0, 'Tokarawa off Hadejia', 'Osun', 'Aiyedade', 'Gbongan', '', '0', 'Medniima International School', 'Badawa layout', '2017-09-18', '2017-10-24 07:48:52', '2017-10-24 07:48:52', 1);
+(1, 'adana ibrahim ololade', 'MIS/STU/89124', 'e10adc3949ba59abbe56e057f20f883e', 'o89124@mis.com', 'Male', '89124.png', '2017/10/20', 7, 1, 'adrghjkl', 'kwara', 'irepodun', 'ajase', '', '0', 'wertyui', 'uewrty', '2017-10-20', '2017-10-21 01:29:57', '2017-10-22 06:32:00', 1),
+(2, 'abdul yekeen olamide', 'MIS/STU/77254', 'e10adc3949ba59abbe56e057f20f883e', 'o77254@mis.com', 'Male', '77254.jpg', '2014/02/04', 1, 1, 'drtfghjuk', 'kwara', 'irepodun', 'ajase', '', '0', 'my former school noni', 'sdfghj', '2017-05-22', '2017-10-21 03:09:05', '2017-10-22 06:32:05', 1),
+(3, 'Sanusi Tajudeen Akinwumi', 'MIS/STU/54106', 'e10adc3949ba59abbe56e057f20f883e', 'a54106@mis.com', 'Male', '54106.JPG', '2015/08/06', 8, 0, 'Tokarawa off Hadejia', 'Osun', 'Aiyedade', 'Gbongan', '', '0', 'Medniima International School', 'Badawa layout', '2017-09-18', '2017-10-24 07:48:52', '2017-10-24 07:48:52', 1);
 
 -- --------------------------------------------------------
 
@@ -1793,7 +1793,7 @@ CREATE TABLE IF NOT EXISTS `tblteacher` (
 --
 
 INSERT INTO `tblteacher` (`id`, `username`, `fullname`, `email`, `phone`, `address`, `gender`, `DOB`, `password`, `classid`, `decipline`, `subject_taken`, `photo`, `employ_date`, `salary`, `status`, `date`) VALUES
-(2, 'MIS/STAFF/26272', 'omolola owoeye', 'ismartnaija@gmail.com', '08028825833', 'sdfxcghjkl;lkjhjhaersdtgfhjpoftdf', 'Female', '1993-11-08', 'c82138c7e01ad922b0a58fdd33c3a91c', 1, 'chemistry', '1,2,3', '26272.jpg', '2017-10-02', 10000, '1', '2017-10-21 07:03:45');
+(2, 'MIS/STAFF/26272', 'omolola owoeye', 'ismartnaija@gmail.com', '08028825833', 'sdfxcghjkl;lkjhjhaersdtgfhjpoftdf', 'Female', '1993-11-08', 'e10adc3949ba59abbe56e057f20f883e', 1, 'chemistry', '1,2,3', '26272.jpg', '2017-10-02', 10000, '1', '2017-10-21 07:03:45');
 
 -- --------------------------------------------------------
 

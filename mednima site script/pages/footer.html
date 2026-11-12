@@ -122,10 +122,14 @@
     
     <script src="<?php echo SITE_URL;?>js/JiSlider.js"></script>
 <script>
-			$(window).load(function () {
-				$('#JiSlider').JiSlider({color: '#fff', start: 3, reverse: true}).addClass('ff')
-			})
-		</script>
+	$(window).load(function () {
+		var slider = $('#JiSlider');
+		var slideCount = slider.find('ul li').length;
+		if (slideCount) {
+			slider.JiSlider({color: '#fff', start: Math.min(3, slideCount), reverse: true}).addClass('ff');
+		}
+	});
+</script>
     
     <!-- flexSlider -->
 	<script defer src="<?php echo SITE_URL;?>js/jquery.flexslider.js"></script>

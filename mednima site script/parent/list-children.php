@@ -1,4 +1,7 @@
 <?php
+$msg = '';
+$error = '';
+
 include ("engine/header.php");
 include ("engine/tophead.php");
 $title = "My Children";
